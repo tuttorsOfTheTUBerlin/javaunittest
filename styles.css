@@ -1,20 +1,28 @@
 .que.javaunittest textarea.qtype_javaunittest_response {
-    width: 100%;
+	width: 100%;
 }
-.que.javaunittest textarea.qtype_javaunittest_response.qtype_javaunittest_plain {
-    white-space: pre-wrap;
-    font: inherit;
+
+.que.javaunittest textarea.qtype_javaunittest_response.qtype_javaunittest_plain
+	{
+	white-space: pre-wrap;
+	font: inherit;
 }
-.que.javaunittest textarea.qtype_javaunittest_response.qtype_javaunittest_monospaced {
-    white-space: pre;
-    font-family: Andale Mono, Monaco, Courier New, DejaVu Sans Mono, monospace;
+
+.que.javaunittest textarea.qtype_javaunittest_response.qtype_javaunittest_monospaced
+	{
+	white-space: pre;
+	font-family: Andale Mono, Monaco, Courier New, DejaVu Sans Mono,
+		monospace;
 }
+
 .que.javaunittest .qtype_javaunittest_response {
-    min-height: 3em;
+	min-height: 3em;
 }
+
 .que.javaunittest .qtype_javaunittest_response.readonly {
-    background-color: white;
+	background-color: white;
 }
+
 .que.javaunittest div.qtype_javaunittest_response textarea {
-    width: 100%;
+	width: 100%;
 }

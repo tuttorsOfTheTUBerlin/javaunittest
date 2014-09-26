@@ -4,7 +4,7 @@ We create a question, in which the students have to implement the factorial func
 
 In directory "Factorial":
 
-Factorial.java 		- givencode (interface) by teacher
+Factorial.java			- givencode (interface) by teacher
 FactorialTest.java  	- the JUnit test code to upload by teacher ("JUnit test code" field on the question editing form)
 Correct_Response.java	- an possible (correct) response by student
 
@@ -28,5 +28,7 @@ outputs:
 
 -----------------
 
-There are other two examples in this directory: Reverse, Search
+There are other two examples in this directory: Reverse, Search.
+
+Furthermore we added an example for junit 4 style and timeout. See HelloWorld directory. 
 
