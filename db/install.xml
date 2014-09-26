@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="question/type/javaunittest/db" VERSION="20120122" COMMENT="XMLDB file for Moodle question/type/javaunittest"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="qtype_javaunittest_options" COMMENT="Extra options for javaunittest questions.">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="questionid"/>
+        <FIELD NAME="questionid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="Foreign key linking to the question table." PREVIOUS="id" NEXT="responsefieldlines"/>
+        <FIELD NAME="responsefieldlines" TYPE="int" LENGTH="4" NOTNULL="true" DEFAULT="15" SEQUENCE="false" COMMENT="Approximate height, in lines, of the input box the students should be given for their response." PREVIOUS="questionid" NEXT="givencode"/>
+	<FIELD NAME="givencode" TYPE="text" LENGTH="small" NOTNULL="true" SEQUENCE="false" COMMENT="the code given by teacher to be filled out by student" PREVIOUS="responsefieldlines" NEXT="testclassname"/>
+	<FIELD NAME="testclassname" TYPE="text" LENGTH="small" NOTNULL="true" SEQUENCE="false" COMMENT="the junit test class name" PREVIOUS="givencode" NEXT = "junitcode" />
+            <FIELD NAME="junitcode" TYPE="text" LENGTH="small" NOTNULL="true" SEQUENCE="false" COMMENT="the junit code given by teacher to test student's response" PREVIOUS="testclassname" />
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id" NEXT="questionid"/>
+        <KEY NAME="questionid" TYPE="foreign-unique" FIELDS="questionid" REFTABLE="question" REFFIELDS="id" PREVIOUS="primary"/>
+      </KEYS>
+    </TABLE>
+  </TABLES>
+</XMLDB>

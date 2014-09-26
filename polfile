@@ -1,0 +1,4 @@
+grant {
+  permission java.io.FilePermission "${user.home}${/}junit.properties", "read";
+  permission java.util.PropertyPermission "user.home", "read";
+};
