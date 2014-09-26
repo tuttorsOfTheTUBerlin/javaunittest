@@ -4,7 +4,7 @@
  *
  * @package 	qtype
  * @subpackage 	javaunittest
- * @author 		Michael Rumler, rumler@ni.tu-berlin.de, Berlin Institute of Technology
+ * @author 	Michael Rumler, rumler@ni.tu-berlin.de, Berlin Institute of Technology
  * @license 	http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
  
@@ -65,8 +65,8 @@ Todo in order to get this question type running properly:
 	This module is developed by tutors of the TU Berlin.
 	
 	Original version: Süreç Özcan (sojunit 2008), suerec@darkjade.net
-    Main developer: Gergely Bertalan, bertalangeri@freemail.hu
-    Maintenance and Updates: Michael Rumler, rumler@ni.tu-berlin.de
+    	Main developer: Gergely Bertalan, bertalangeri@freemail.hu
+    	Maintenance and Updates: Michael Rumler, rumler@ni.tu-berlin.de
     
  	Moodle module page: https://moodle.org/plugins/view.php?plugin=qtype_javaunittest
  	Source: https://github.com/tuttorsOfTheTUBerlin/javaunittest
@@ -85,6 +85,6 @@ Todo in order to get this question type running properly:
 			timeout will automatically added to test classes
 		+ some more display settings added
 		+ support for junit4 style (junit3 style still works)
-		# changed grading: if the test class does not compile we grade the students
-			answer as wrong, not as our fault and give 100%...
-			otherwise removing/renaming a required method let the student pass
+		# changed grading: if the test class does not compile we grade
+			the students answer as wrong, otherwise removing/renaming
+			a required method let the student pass
