@@ -19,94 +19,41 @@ require_once ($CFG->libdir . '/questionlib.php');
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class qtype_javaunittest extends question_type {
-	public function response_file_areas() {
-		return array (
-				'attachments',
-				'answer' 
-		);
+	/**
+	 * Whether this question type can perform a frequency analysis of student
+	 * responses.
+	 *
+	 * If this method returns true, you must implement the get_possible_responses
+	 * method, and the question_definition class must implement the
+	 * classify_response method.
+	 *
+	 * @return bool whether this report can analyse all the student responses
+	 * for things like the quiz statistics report.
+	 */
+	public function can_analyse_responses() {
+		return false;
 	}
 	
 	/**
-	 * code to retrieve the extra data we stored for the question in the database
-	 * Get additional information from database and attach it to the question object
+	 * If your question type has a table that extends the question table, and
+	 * you want the base class to automatically save, backup and restore the extra fields,
+	 * override this method to return an array wherer the first element is the table name,
+	 * and the subsequent entries are the column names (apart from id and questionid).
 	 *
-	 * @param question $question        	
+	 * @return mixed array as above, or null to tell the base class to do nothing.
 	 */
-	public function get_question_options($question) {
-		global $DB;
-		$question->options = $DB->get_record ( 'qtype_javaunittest_options', 
-				array (
-						'questionid' => $question->id 
-				), '*', MUST_EXIST );
-		parent::get_question_options ( $question );
+	public function extra_question_fields() {
+		return array('qtype_javaunittest_options', 'responsefieldlines', 'givencode', 'testclassname', 'junitcode');
 	}
 	
 	/**
-	 * Save the units and the answers associated with this question.
+	 * Whether or not to break down question stats and response analysis, for a question defined by $questiondata.
 	 *
-	 * @param array $formdata        	
-	 * @return boolean to indicate success of failure.
+	 * @param object $questiondata The full question definition data.
+	 * @return bool
 	 */
-	public function save_question_options($formdata) {
-		global $DB;
-		$context = $formdata->context;
-		$update = true;
-		
-		$options = $DB->get_record ( 'qtype_javaunittest_options', 
-				array (
-						'questionid' => $formdata->id 
-				) );
-		
-		if (! $options) {
-			$update = false;
-			$options = new stdClass ();
-			$options->questionid = $formdata->id;
-		}
-		
-		$options->responseformat = 'plain';
-		$options->responsefieldlines = $formdata->responsefieldlines;
-		$options->givencode = $formdata->givencode;
-		$options->testclassname = $formdata->testclassname;
-		$options->junitcode = $formdata->junitcode;
-		
-		if ($update) {
-			$DB->update_record ( "qtype_javaunittest_options", $options );
-		} else {
-			$DB->insert_record ( "qtype_javaunittest_options", $options );
-		}
-	}
-	
-	/**
-	 * Deletes question and its tables from the database
-	 *
-	 * @param integer $questionid
-	 *        	The question being deleted
-	 * @param integer $contextid        	
-	 * @return boolean to indicate success of failure.
-	 */
-	public function delete_question($questionid, $contextid) {
-		global $DB;
-		$DB->delete_records ( 'qtype_javaunittest_options', 
-				array (
-						'questionid' => $questionid 
-				) );
-		
-		parent::delete_question ( $questionid, $contextid );
-	}
-	
-	/**
-	 * Initializes question from the question-type specific database tables
-	 *
-	 * @return boolean to indicate success of failure
-	 */
-	protected function initialise_question_instance(question_definition $question, 
-			$questiondata) {
-		parent::initialise_question_instance ( $question, $questiondata );
-		$question->responseformat = 'plain';
-		$question->responsefieldlines = $questiondata->options->responsefieldlines;
-		$question->givencode = $questiondata->options->givencode;
-		$question->testclassname = $questiondata->options->testclassname;
-		$question->junitcode = $questiondata->options->junitcode;
+	public function break_down_stats_and_response_analysis_by_variant($questiondata) {
+		return false;
 	}
 	
 	/**

@@ -98,56 +98,6 @@ class qtype_javaunittest_renderer extends qtype_renderer {
 	}
 }
 
-/**
- * A base class to abstract out the differences between different type of
- * response format.
- *
- * @copyright 2011 The Open University
- * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
-abstract class qtype_javaunittest_format_renderer_base extends plugin_renderer_base {
-	/**
-	 * Render the students respone when the question is in read-only mode.
-	 *
-	 * @param string $name
-	 *        	the variable name this input edits.
-	 * @param question_attempt $qa
-	 *        	the question attempt being display.
-	 * @param question_attempt_step $step
-	 *        	the current step.
-	 * @param int $lines
-	 *        	approximate size of input box to display.
-	 * @param object $context
-	 *        	the context teh output belongs to.
-	 * @return string html to display the response.
-	 */
-	public abstract function response_area_read_only($name, question_attempt $qa, 
-			question_attempt_step $step, $lines, $context);
-	
-	/**
-	 * Render the students respone when the question is in read-only mode.
-	 *
-	 * @param string $name
-	 *        	the variable name this input edits.
-	 * @param question_attempt $qa
-	 *        	the question attempt being display.
-	 * @param question_attempt_step $step
-	 *        	the current step.
-	 * @param int $lines
-	 *        	approximate size of input box to display.
-	 * @param object $context
-	 *        	the context teh output belongs to.
-	 * @return string html to display the response for editing.
-	 */
-	public abstract function response_area_input($name, question_attempt $qa, 
-			question_attempt_step $step, $lines, $context);
-	
-	/**
-	 *
-	 * @return string specific class name to add to the input element.
-	 */
-	protected abstract function class_name();
-}
 
 /**
  * An javaunittest format renderer for javaunittests where the student should use a
