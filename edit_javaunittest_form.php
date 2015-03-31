@@ -27,8 +27,12 @@ class qtype_javaunittest_edit_form extends question_edit_form {
 		$definitionoptions = $this->_customdata ['definitionoptions'];
 		$attachmentoptions = $this->_customdata ['attachmentoptions'];
 		
-		$mform->removeElement ( 'defaultmark' );
-		$mform->addElement ( 'hidden', 'defaultmark', 1 );
+		
+		// -------------------------- feedback options
+		$mform->addElement('select', 'feedbacklevel',
+				get_string('feedbacklevel', 'qtype_javaunittest'),
+				$qtype->feedback_levels() );
+		$mform->setDefault('feedbacklevel', FEEDBACK_ONLY_TIMES);
 		
 		// -------------------------- size of the response field
 		$mform->addElement ( 'select', 'responsefieldlines', 
@@ -53,7 +57,7 @@ class qtype_javaunittest_edit_form extends question_edit_form {
 						'cols' => 80,
 						'rows' => 1 
 				) );
-		$mform->setType ( 'testclassname', PARAM_RAW );
+		$mform->setType ( 'testclassname', PARAM_ALPHANUMEXT );
 		$mform->addRule ( 'testclassname', null, 'required' );
 		$mform->addHelpButton ( 'testclassname', 'testclassname', 
 				'qtype_javaunittest' );
@@ -68,24 +72,6 @@ class qtype_javaunittest_edit_form extends question_edit_form {
 		$mform->addHelpButton ( 'junitcode', 'uploadtestclass', 'qtype_javaunittest' );
 	}
 	
-	// this methode is called to preprocess the data for the edit form in the case of
-	// reediting the question
-	protected function data_preprocessing($question) {
-		global $CFG;
-		
-		$question = parent::data_preprocessing ( $question );
-		
-		if (empty ( $question->options )) {
-			return $question;
-		}
-		
-		$question->responseformat = 'plain';
-		$question->responsefieldlines = $question->options->responsefieldlines;
-		$question->givencode = $question->options->givencode;
-		$question->testclassname = $question->options->testclassname;
-		$question->junitcode = $question->options->junitcode;
-		return $question;
-	}
 	public function qtype() {
 		return 'javaunittest';
 	}

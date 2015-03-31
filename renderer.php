@@ -73,27 +73,17 @@ class qtype_javaunittest_renderer extends qtype_renderer {
 	public function specific_feedback(question_attempt $qa) {
 		global $DB, $CFG;
 		
-		// in question.grade_response() function these data were used to store the
-		// feedback
-		// in the database.
-		$attemptid = optional_param ( 'attempt', '', PARAM_INT );
-		$question = $qa->get_question ();
-		$step = $qa->get_last_step_with_qt_var ( 'answer' );
-		$studentid = $step->get_user_id ();
-		$questionid = $question->id;
+		// get feedback from the database
+		$record = $DB->get_record('qtype_javaunittest_feedback', array('questionattemptid' => $qa->get_database_id()), 'feedback');
 		
-		// compute the unique id of the feedback
-		$unique_answerid = ($studentid + $questionid * $attemptid) +
-				 ($studentid * $questionid + $attemptid);
+		if ($record === false) {
+			return '';
+		}
 		
-		// get the feedback from the database
-		$answer = $DB->get_records ( 'question_answers', 
-				array (
-						'question' => $unique_answerid 
-				) );
-		$answer = array_shift ( $answer );
+		$feedback = $record->feedback;
 		
-		return $question->format_text ( $answer->feedback, 0, $qa, 'question', 
+		$question = $qa->get_question();
+		return $question->format_text ( $feedback, 0, $qa, 'question', 
 				'answerfeedback', 1 );
 	}
 }

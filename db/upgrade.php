@@ -92,8 +92,24 @@ function xmldb_qtype_javaunittest_upgrade($oldversion) {
 		upgrade_plugin_savepoint ( true, 2011102702, 'qtype', 'javaunittest' );
 	}
 	
-	// Moodle v2.3.0 release upgrade line
-	// Put any upgrade step following this
+	if ($oldversion < 2015031700) {
+		$table = new xmldb_table('qtype_javaunittest_options');
+		$field = new xmldb_field('feedbacklevel', XMLDB_TYPE_INTEGER, '4', XMLDB_UNSIGNED, XMLDB_NOTNULL, null, '0', 'junitcode');
+		$dbman->add_field($table, $field);
+		
+		
+		$table = new xmldb_table('qtype_javaunittest_feedback');
+		$field = $table->add_field('id', XMLDB_TYPE_INTEGER, '10', XMLDB_UNSIGNED, XMLDB_NOTNULL, XMLDB_SEQUENCE, null);
+		$field = $table->add_field('questionattemptid', XMLDB_TYPE_INTEGER, '10', XMLDB_UNSIGNED, XMLDB_NOTNULL, null, null, $field);
+		$field = $table->add_field('feedback', XMLDB_TYPE_TEXT, 'small', null, XMLDB_NOTNULL, null, null, $field);
+		$table->add_key('primary', XMLDB_KEY_PRIMARY, array('id'));
+		$table->add_key('usr_fkey', XMLDB_KEY_FOREIGN, array('questionattemptid'), 'question_attempts', array('id'));
+		if (!$dbman->table_exists($table))
+			$dbman->create_table($table);
+		
+		
+		upgrade_plugin_savepoint(true, 2015031700, 'qtype', 'javaunittest');
+	}
 	
 	return true;
 }
