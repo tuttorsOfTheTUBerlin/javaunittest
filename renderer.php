@@ -73,81 +73,21 @@ class qtype_javaunittest_renderer extends qtype_renderer {
 	public function specific_feedback(question_attempt $qa) {
 		global $DB, $CFG;
 		
-		// in question.grade_response() function these data were used to store the
-		// feedback
-		// in the database.
-		$attemptid = optional_param ( 'attempt', '', PARAM_INT );
-		$question = $qa->get_question ();
-		$step = $qa->get_last_step_with_qt_var ( 'answer' );
-		$studentid = $step->get_user_id ();
-		$questionid = $question->id;
+		// get feedback from the database
+		$record = $DB->get_record('qtype_javaunittest_feedback', array('questionattemptid' => $qa->get_database_id()), 'feedback');
 		
-		// compute the unique id of the feedback
-		$unique_answerid = ($studentid + $questionid * $attemptid) +
-				 ($studentid * $questionid + $attemptid);
+		if ($record === false) {
+			return '';
+		}
 		
-		// get the feedback from the database
-		$answer = $DB->get_records ( 'question_answers', 
-				array (
-						'question' => $unique_answerid 
-				) );
-		$answer = array_shift ( $answer );
+		$feedback = $record->feedback;
 		
-		return $question->format_text ( $answer->feedback, 0, $qa, 'question', 
+		$question = $qa->get_question();
+		return $question->format_text ( $feedback, 0, $qa, 'question', 
 				'answerfeedback', 1 );
 	}
 }
 
-/**
- * A base class to abstract out the differences between different type of
- * response format.
- *
- * @copyright 2011 The Open University
- * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
-abstract class qtype_javaunittest_format_renderer_base extends plugin_renderer_base {
-	/**
-	 * Render the students respone when the question is in read-only mode.
-	 *
-	 * @param string $name
-	 *        	the variable name this input edits.
-	 * @param question_attempt $qa
-	 *        	the question attempt being display.
-	 * @param question_attempt_step $step
-	 *        	the current step.
-	 * @param int $lines
-	 *        	approximate size of input box to display.
-	 * @param object $context
-	 *        	the context teh output belongs to.
-	 * @return string html to display the response.
-	 */
-	public abstract function response_area_read_only($name, question_attempt $qa, 
-			question_attempt_step $step, $lines, $context);
-	
-	/**
-	 * Render the students respone when the question is in read-only mode.
-	 *
-	 * @param string $name
-	 *        	the variable name this input edits.
-	 * @param question_attempt $qa
-	 *        	the question attempt being display.
-	 * @param question_attempt_step $step
-	 *        	the current step.
-	 * @param int $lines
-	 *        	approximate size of input box to display.
-	 * @param object $context
-	 *        	the context teh output belongs to.
-	 * @return string html to display the response for editing.
-	 */
-	public abstract function response_area_input($name, question_attempt $qa, 
-			question_attempt_step $step, $lines, $context);
-	
-	/**
-	 *
-	 * @return string specific class name to add to the input element.
-	 */
-	protected abstract function class_name();
-}
 
 /**
  * An javaunittest format renderer for javaunittests where the student should use a
