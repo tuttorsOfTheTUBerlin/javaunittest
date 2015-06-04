@@ -79,6 +79,6 @@ $string['pathpolicy'] = 'Pfad zur Policy-Datei für den Java Security Manager';
 $string['precommand'] = 'Kommando vor Test-Ausführung';
 $string['precommand_desc'] = 'Dieser Befehl wird auf der Shell vor den Tests ausgeführt. Dies kann genutzt werden, um z.B. mit ulimit die cpu time für die Tests zu begrenzen.';
 $string['debug_heading'] = 'Debuginformationen';
-$string['debug_heading_desc'] = 'Nur zum testen aktivieren!';
+$string['debug_heading_desc'] = 'Nur zum testen aktivieren! (nur für lokale Javaausführung)';
 $string['debug_logfile'] = 'Speichere Compilerausgabe und JUNIT-Ausgabe im temporären Verzeichnis';
 $string['debug_nocleanup'] = 'Temporäre Verzeichnisse und Dateien nicht löschen';

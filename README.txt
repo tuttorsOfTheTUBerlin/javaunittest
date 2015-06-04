@@ -84,7 +84,7 @@
             backup feature, thanks to Martin Gauk
         + a lot of security improvements, again many thanks to Martin Gauk
         + added debug settings
-        # 2.8 is supported
+        # 2.8 and 2.9 are supported
         # fixed grading issue (now 0% insteat of 100% if students code combined with
             test class do not compile)
         # code cleanup and rewrite (fixed encoding issues, adaption of Moodle coding

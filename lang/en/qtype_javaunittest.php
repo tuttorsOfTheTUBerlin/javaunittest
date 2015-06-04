@@ -79,6 +79,6 @@ $string['pathpolicy'] = 'Path of the policy file for the Java Security Manager';
 $string['precommand'] = 'Command before test execution';
 $string['precommand_desc'] = 'This will be executed on shell before the tests. You may use ulimit to limit resources (e.g. cpu time) for the tests.';
 $string['debug_heading'] = 'Local debug information';
-$string['debug_heading_desc'] = 'Enable only for testing! Works only if execution is not on other server';
+$string['debug_heading_desc'] = 'Enable only for testing! (only local java execution)';
 $string['debug_logfile'] = 'Save logfiles to temporary directory';
 $string['debug_nocleanup'] = 'Do not clean up temporary files and directories';
