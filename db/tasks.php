@@ -7,17 +7,16 @@
  * @subpackage javaunittest
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+defined ( 'MOODLE_INTERNAL' ) || die ();
 
-defined('MOODLE_INTERNAL') || die();
-
-$tasks = array(
-    array(
-        'classname' => 'qtype_javaunittest\task\cron_task',
-        'blocking' => 0,
-        'minute' => '0',
-        'hour' => 'R',
-        'day' => '*',
-        'month' => '*',
-        'dayofweek' => '0'
-    )
+$tasks = array (
+        array (
+                'classname' => 'qtype_javaunittest\task\cron_task',
+                'blocking' => 0,
+                'minute' => '0',
+                'hour' => 'R',
+                'day' => '*',
+                'month' => '*',
+                'dayofweek' => '0' 
+        ) 
 );

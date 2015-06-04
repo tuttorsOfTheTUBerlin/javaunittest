@@ -1,7 +1,7 @@
 grant {
   //permission java.io.FilePermission "${user.home}${/}junit.properties", "read";
   //permission java.util.PropertyPermission "user.home", "read";
-  //permission java.lang.RuntimePermission "accessDeclaredMembers";
+  permission java.lang.RuntimePermission "accessDeclaredMembers";
   permission java.lang.RuntimePermission "setIO";
   permission java.lang.RuntimePermission "getStackTrace";
 };
