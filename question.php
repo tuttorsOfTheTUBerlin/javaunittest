@@ -214,8 +214,9 @@ class qtype_javaunittest_question extends question_graded_automatically {
                         $feedback .= '<pre>' . htmlspecialchars ( $output ) . '</pre>';
                         $feedback .= "<br>\n";
                     }
+					$feedback .= "<br>\n";
                 }
-                // search for common throwables, by package, by alphabet
+                // search for common throwables, ordered primary by package, secundary by alphabet
                 if ( strpos ( $output, 'java.io.IOException' ) !== false ) {
                     $feedback .= get_string ( 'ioexception', 'qtype_javaunittest' );
                     $feedback .= "<br>\n<br>\n";
@@ -268,13 +269,13 @@ class qtype_javaunittest_question extends question_graded_automatically {
                 if ( $numtests > 0 && $totalerrors == 0 ) {
                     $feedback .= get_string ( 'CA', 'qtype_javaunittest' );
                     $feedback .= "<br>\n";
+                } else if ( $numtests > 0 && $numtests == $totalerrors ) {
+                    $feedback .= get_string ( 'WA', 'qtype_javaunittest' );
+                    $feedback .= "<br>\n";
                 } else if ( $numtests > 0 && $totalerrors != 0 ) {
                     $feedback .= get_string ( 'PCA', 'qtype_javaunittest' );
                     $feedback .= "<br>\n";
-                } else if ( $numtest > 0 && $numtests == $totalerrors ) {
-                    $feedback .= get_string ( 'WA', 'qtype_javaunittest' );
-                    $feedback .= "<br>\n";
-                }
+                } 
                                 
             }
         }
@@ -312,7 +313,8 @@ class qtype_javaunittest_question extends question_graded_automatically {
         $cfg_plugin = get_config ( 'qtype_javaunittest' );
         
         // create a unique temp folder to keep the data together in one place
-        $temp_folder = $CFG->dataroot . '/temp/javaunittest_tmp_' . $this->id . '_' . $this->questionattemptid;
+        $temp_folder = $CFG->dataroot . '/temp/javaunittest_uid=' . $USER->id . '_qid=' 
+				. $this->id . '_aid=' . $this->questionattemptid;
         
         if ( file_exists ( $temp_folder ) ) {
             $this->delTree ( $temp_folder );
@@ -351,7 +353,7 @@ class qtype_javaunittest_question extends question_graded_automatically {
             // compiler error
             if ( !empty ( $compiler['compileroutput'] ) ) {
                 $compileroutput = str_replace ( $temp_folder, '', $compiler['compileroutput'] );
-                if ( $cfg_plugin->debug_logfile) {
+                if ( $cfg_plugin->debug_logfile ) {
                     $logfile = $studentsfile . "_compilerout.txt";
                     $fd_logfile = fopen ( $logfile, 'w' );
                     if ( $fd_logfile === false )
@@ -374,7 +376,7 @@ class qtype_javaunittest_question extends question_graded_automatically {
             
             // compiler error
             if ( !empty ( $compiler['compileroutput'] ) ) {
-                if ( $cfg_plugin->debug_logfile) {
+                if ( $cfg_plugin->debug_logfile ) {
                     $logfile = $testfile . "_compilerout.txt";
                     $fd_logfile = fopen ( $logfile, 'w' );
                     if ( $fd_logfile === false )
@@ -402,7 +404,7 @@ class qtype_javaunittest_question extends question_graded_automatically {
             $ret_proc = open_process ( $cfg_plugin->precommand . '; exec ' . escapeshellcmd ( $command ), 
                     $cfg_plugin->timeoutreal, $cfg_plugin->memory_limit_output * 1024, $output, $testruntime );
             
-            if ( $cfg_plugin->debug_logfile) {
+            if ( $cfg_plugin->debug_logfile ) {
                 $logfile = $testfile . "_junitout.txt";
                 $fd_logfile = fopen ( $logfile, 'w' );
                 if ( $fd_logfile === false )
@@ -500,7 +502,7 @@ class qtype_javaunittest_question extends question_graded_automatically {
     function compile ( $file ) {
         $cfg = get_config ( 'qtype_javaunittest' );
         
-        $command = $cfg->pathjavac . ' -nowarn -cp ' . $cfg->pathjunit . ' -sourcepath ' . dirname ( $file ) . ' ' .
+        $command = $cfg->pathjavac . ' -encoding UTF-8 -nowarn -cp ' . $cfg->pathjunit . ' -sourcepath ' . dirname ( $file ) . ' ' .
                  $file;
         
         // execute the command
@@ -526,13 +528,28 @@ class qtype_javaunittest_question extends question_graded_automatically {
      * @return boolean true on success
      */
     function mkdir_recursive ( $folder ) {
+		global $CFG;
         if ( is_dir ( $folder ) ) {
             return true;
         }
         if ( !$this->mkdir_recursive ( dirname ( $folder ) ) ) {
             return false;
         }
-        $rc = mkdir ( $folder, 01700 );
+		// calculate directory permission for temporary directories
+		// (get moodle config value, get digits, set first bit for temporary bit "1", create decimal)
+		$dirpermissionstr = decoct($CFG->directorypermissions);
+		$dirpermissionint;
+		if ( strlen ( $dirpermissionstr ) == 3) {
+			$dirpermissionstr = "1" . $dirpermissionstr;
+		} else if ( strlen ( $dirpermissionstr ) == 4) {
+			if ( $dirpermissionstr[0] == 0 ) $dirpermissionstr[0] = 1;
+		} else {
+			throw new Exception ( 
+					"qtype_javaunittest: moodle config directorypermissions
+							looks broken<br>\n" );
+		}
+		$dirpermissionint = intval($dirpermissionstr, 8);
+		$rc = mkdir ( $folder, $dirpermissionint );
         if ( !$rc ) {
             throw new Exception ( "qtype_javaunittest: cannot create directory " . $folder . "<br>\n" );
         }

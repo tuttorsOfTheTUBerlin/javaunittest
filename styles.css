@@ -23,3 +23,7 @@
 .que.javaunittest div.qtype_javaunittest_response textarea {
     width: 100%;
 }
+
+#id_givencode, #id_junitcode, #id_testclassname, .qtype_javaunittest_plain.qtype_javaunittest_response {
+    font-family: "Courier New", Courier, monospace;
+}
