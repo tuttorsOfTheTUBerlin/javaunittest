@@ -545,7 +545,7 @@ class qtype_javaunittest_question extends question_graded_automatically {
             if ( $dirpermissionstr[0] == 0 ) $dirpermissionstr[0] = 1;
         } else {
             throw new Exception ( 
-                    "qtype_javaunittest: moodle config directorypermissions looks broken<br>\n" );
+                    "qtype_javaunittest: moodle config directory permissions settings seems broken (not 3-4 digits)<br>\n" );
         }
         $dirpermissionint = intval($dirpermissionstr, 8);
         $rc = mkdir ( $folder, $dirpermissionint );
