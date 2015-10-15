@@ -214,7 +214,7 @@ class qtype_javaunittest_question extends question_graded_automatically {
                         $feedback .= '<pre>' . htmlspecialchars ( $output ) . '</pre>';
                         $feedback .= "<br>\n";
                     }
-					$feedback .= "<br>\n";
+                    $feedback .= "<br>\n";
                 }
                 // search for common throwables, ordered primary by package, secundary by alphabet
                 if ( strpos ( $output, 'java.io.IOException' ) !== false ) {
@@ -314,7 +314,7 @@ class qtype_javaunittest_question extends question_graded_automatically {
         
         // create a unique temp folder to keep the data together in one place
         $temp_folder = $CFG->dataroot . '/temp/javaunittest_uid=' . $USER->id . '_qid=' 
-				. $this->id . '_aid=' . $this->questionattemptid;
+                . $this->id . '_aid=' . $this->questionattemptid;
         
         if ( file_exists ( $temp_folder ) ) {
             $this->delTree ( $temp_folder );
@@ -528,28 +528,27 @@ class qtype_javaunittest_question extends question_graded_automatically {
      * @return boolean true on success
      */
     function mkdir_recursive ( $folder ) {
-		global $CFG;
+        global $CFG;
         if ( is_dir ( $folder ) ) {
             return true;
         }
         if ( !$this->mkdir_recursive ( dirname ( $folder ) ) ) {
             return false;
         }
-		// calculate directory permission for temporary directories
-		// (get moodle config value, get digits, set first bit for temporary bit "1", create decimal)
-		$dirpermissionstr = decoct($CFG->directorypermissions);
-		$dirpermissionint;
-		if ( strlen ( $dirpermissionstr ) == 3) {
-			$dirpermissionstr = "1" . $dirpermissionstr;
-		} else if ( strlen ( $dirpermissionstr ) == 4) {
-			if ( $dirpermissionstr[0] == 0 ) $dirpermissionstr[0] = 1;
-		} else {
-			throw new Exception ( 
-					"qtype_javaunittest: moodle config directorypermissions
-							looks broken<br>\n" );
-		}
-		$dirpermissionint = intval($dirpermissionstr, 8);
-		$rc = mkdir ( $folder, $dirpermissionint );
+        // calculate directory permission for temporary directories
+        // (get moodle config value, get digits, set first bit for temporary bit "1", create decimal)
+        $dirpermissionstr = decoct($CFG->directorypermissions);
+        $dirpermissionint;
+        if ( strlen ( $dirpermissionstr ) == 3) {
+            $dirpermissionstr = "1" . $dirpermissionstr;
+        } else if ( strlen ( $dirpermissionstr ) == 4) {
+            if ( $dirpermissionstr[0] == 0 ) $dirpermissionstr[0] = 1;
+        } else {
+            throw new Exception ( 
+                    "qtype_javaunittest: moodle config directorypermissions looks broken<br>\n" );
+        }
+        $dirpermissionint = intval($dirpermissionstr, 8);
+        $rc = mkdir ( $folder, $dirpermissionint );
         if ( !$rc ) {
             throw new Exception ( "qtype_javaunittest: cannot create directory " . $folder . "<br>\n" );
         }
