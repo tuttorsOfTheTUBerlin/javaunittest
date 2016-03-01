@@ -13,9 +13,9 @@
 defined ( 'MOODLE_INTERNAL' ) || die ();
 
 $plugin->component = 'qtype_javaunittest';
-$plugin->version = 2015101500;
-$plugin->requires = 2014041100;
+$plugin->version = 2016022500;
+$plugin->requires = 2015051100;
 
 $plugin->maturity = MATURITY_STABLE;
 
-$plugin->release = 2.02;
+$plugin->release = 2.03;

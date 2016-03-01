@@ -1,0 +1,36 @@
+.cm-s-readonly.CodeMirror { 
+    background: #e4e4e4; 
+    border-style: groove;
+    border-width: 1px; 
+    color: #000; 
+    border-color: #c0c0c0;
+    font-family: monospace;
+    height: 300px;
+}
+
+.cm-s-readonly .cm-header {color: blue;}
+.cm-s-readonly .cm-quote {color: #090;}
+
+.cm-s-readonly .cm-keyword {color: #708;}
+.cm-s-readonly .cm-atom {color: #219;}
+.cm-s-readonly .cm-number {color: #164;}
+.cm-s-readonly .cm-def {color: #00f;}
+.cm-s-readonly .cm-variable,
+.cm-s-readonly .cm-punctuation,
+.cm-s-readonly .cm-property,
+.cm-s-readonly .cm-operator {}
+.cm-s-readonly .cm-variable-2 {color: #05a;}
+.cm-s-readonly .cm-variable-3 {color: #085;}
+.cm-s-readonly .cm-comment {color: #a50;}
+.cm-s-readonly .cm-string {color: #a11;}
+.cm-s-readonly .cm-string-2 {color: #f50;}
+.cm-s-readonly .cm-meta {color: #555;}
+.cm-s-readonly .cm-qualifier {color: #555;}
+.cm-s-readonly .cm-builtin {color: #30a;}
+.cm-s-readonly .cm-bracket {color: #997;}
+.cm-s-readonly .cm-tag {color: #170;}
+.cm-s-readonly .cm-attribute {color: #00c;}
+.cm-s-readonly .cm-hr {color: #999;}
+.cm-s-readonly .cm-link {color: #00c;}
+
+.cm-s-readonly .cm-error {color: #f00;}

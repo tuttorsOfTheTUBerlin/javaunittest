@@ -3,31 +3,43 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../../../../lib/xmldb/xmldb.xsd"
 >
-  <TABLES>
+
+<TABLES>
     <TABLE NAME="qtype_javaunittest_options" COMMENT="Extra options for javaunittest questions.">
       <FIELDS>
-        <FIELD NAME="id" TYPE="int" LENGTH="10" UNSIGNED="true" NOTNULL="true" SEQUENCE="true" NEXT="questionid"/>
-        <FIELD NAME="questionid" TYPE="int" LENGTH="10" UNSIGNED="true" NOTNULL="true" SEQUENCE="false" COMMENT="Foreign key linking to the question table." PREVIOUS="id" NEXT="responsefieldlines"/>
-        <FIELD NAME="responsefieldlines" TYPE="int" LENGTH="4" UNSIGNED="true" NOTNULL="true" DEFAULT="15" SEQUENCE="false" COMMENT="Approximate height, in lines, of the input box the students should be given for their response." PREVIOUS="questionid" NEXT="givencode"/>
-        <FIELD NAME="givencode" TYPE="text" LENGTH="small" NOTNULL="true" SEQUENCE="false" COMMENT="the code given by teacher to be filled out by student" PREVIOUS="responsefieldlines" NEXT="testclassname"/>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" UNSIGNED="true" NOTNULL="true" SEQUENCE="true" NEXT="questionid" />
+        <FIELD NAME="questionid" TYPE="int" LENGTH="10" UNSIGNED="true" NOTNULL="true" SEQUENCE="false" COMMENT="Foreign key linking to the question table." PREVIOUS="id" NEXT="responsefieldlines" />
+        <FIELD NAME="responsefieldlines" TYPE="int" LENGTH="4" UNSIGNED="true" NOTNULL="true" DEFAULT="15" SEQUENCE="false" COMMENT="Approximate height, in lines, of the input box the students should be given for their response." PREVIOUS="questionid" NEXT="givencode" />
+        <FIELD NAME="givencode" TYPE="text" LENGTH="small" NOTNULL="true" SEQUENCE="false" COMMENT="the code given by teacher to be filled out by student" PREVIOUS="responsefieldlines" NEXT="testclassname" />
         <FIELD NAME="testclassname" TYPE="text" LENGTH="small" NOTNULL="true" SEQUENCE="false" COMMENT="the junit test class name" PREVIOUS="givencode" NEXT = "junitcode" />
-        <FIELD NAME="junitcode" TYPE="text" LENGTH="small" NOTNULL="true" SEQUENCE="false" COMMENT="the junit code given by teacher to test student's response" PREVIOUS="testclassname" NEXT="feedbacklevel" />
-        <FIELD NAME="feedbacklevel" TYPE="int" LENGTH="4" UNSIGNED="true" NOTNULL="true" DEFAULT="1" SEQUENCE="false" COMMENT="verbosity level of feedback for the student" PREVIOUS="junitcode" />
+        <FIELD NAME="junitcode" TYPE="text" LENGTH="small" NOTNULL="true" SEQUENCE="false" COMMENT="the junit code given by teacher to test student's response" PREVIOUS="testclassname" NEXT="solution" />
+        <FIELD NAME="solution" TYPE="text" LENGTH="small" SEQUENCE="false" COMMENT="sample solution" PREVIOUS="junitcode" NEXT="signature" />
+        <FIELD NAME="signature" TYPE="text" LENGTH="small" SEQUENCE="false" COMMENT="expected students code signature for javap" PREVIOUS="solution" NEXT="feedbacklevel_studentcompiler" />
+        <FIELD NAME="feedbacklevel_studentcompiler" TYPE="int" LENGTH="4" UNSIGNED="true" NOTNULL="true" DEFAULT="1" SEQUENCE="false" COMMENT="verbosity level of feedback for the student" PREVIOUS="junitcode" NEXT="feedback_studentsignature" />
+        <FIELD NAME="feedbacklevel_studentsignature" TYPE="int" LENGTH="4" UNSIGNED="true" NOTNULL="true" DEFAULT="1" SEQUENCE="false" COMMENT="verbosity level of feedback for the student" PREVIOUS="feedbacklevel_studentcompiler" NEXT="feedback_junitcompiler" />
+        <FIELD NAME="feedbacklevel_junitcompiler" TYPE="int" LENGTH="4" UNSIGNED="true" NOTNULL="true" DEFAULT="0" SEQUENCE="false" COMMENT="verbosity level of feedback for the student" PREVIOUS="feedbacklevel_studentsignature" NEXT="feedbacklevel_times" />
+        <FIELD NAME="feedbacklevel_times" TYPE="int" LENGTH="4" UNSIGNED="true" NOTNULL="true" DEFAULT="1" SEQUENCE="false" COMMENT="verbosity level of feedback for the student" PREVIOUS="feedbacklevel_junitcompiler" NEXT="feedbacklevel_counttests" />
+        <FIELD NAME="feedbacklevel_counttests" TYPE="int" LENGTH="4" UNSIGNED="true" NOTNULL="true" DEFAULT="1" SEQUENCE="false" COMMENT="verbosity level of feedback for the student" PREVIOUS="feedbacklevel_times" NEXT="feedbacklevel_junitheader" />
+        <FIELD NAME="feedbacklevel_junitheader" TYPE="int" LENGTH="4" UNSIGNED="true" NOTNULL="true" DEFAULT="0" SEQUENCE="false" COMMENT="verbosity level of feedback for the student" PREVIOUS="feedbacklevel_counttests" NEXT="feedbacklevel_assertstring" />
+        <FIELD NAME="feedbacklevel_assertstring" TYPE="int" LENGTH="4" UNSIGNED="true" NOTNULL="true" DEFAULT="1" SEQUENCE="false" COMMENT="verbosity level of feedback for the student" PREVIOUS="feedbacklevel_junitheader" NEXT="feedbacklevel_assertexpected" />
+        <FIELD NAME="feedbacklevel_assertexpected" TYPE="int" LENGTH="4" UNSIGNED="true" NOTNULL="true" DEFAULT="0" SEQUENCE="false" COMMENT="verbosity level of feedback for the student" PREVIOUS="feedbacklevel_assertstring" NEXT="feedbacklevel_assertactual" />
+        <FIELD NAME="feedbacklevel_assertactual" TYPE="int" LENGTH="4" UNSIGNED="true" NOTNULL="true" DEFAULT="0" SEQUENCE="false" COMMENT="verbosity level of feedback for the student" PREVIOUS="feedbacklevel_assertexpected" NEXT="feedbacklevel_junitcomplete" />
+        <FIELD NAME="feedbacklevel_junitcomplete" TYPE="int" LENGTH="4" UNSIGNED="true" NOTNULL="true" DEFAULT="0" SEQUENCE="false" COMMENT="verbosity level of feedback for the student" PREVIOUS="feedbacklevel_assertactual" />
       </FIELDS>
       <KEYS>
-        <KEY NAME="primary" TYPE="primary" FIELDS="id" NEXT="questionid"/>
-        <KEY NAME="questionid" TYPE="foreign-unique" FIELDS="questionid" REFTABLE="question" REFFIELDS="id" PREVIOUS="primary"/>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id" NEXT="questionid" />
+        <KEY NAME="questionid" TYPE="foreign-unique" FIELDS="questionid" REFTABLE="question" REFFIELDS="id" PREVIOUS="primary" />
       </KEYS>
     </TABLE>
     <TABLE NAME="qtype_javaunittest_feedback" COMMENT="Generated feedbacks for javaunittest questions.">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" UNSIGNED="true" NOTNULL="true" SEQUENCE="true" NEXT="questionattemptid"/>
-        <FIELD NAME="questionattemptid" TYPE="int" LENGTH="10" UNSIGNED="true" NOTNULL="true" SEQUENCE="false" COMMENT="Foreign key linking to the question_attempts table." PREVIOUS="id" NEXT="feedback"/>
+        <FIELD NAME="questionattemptid" TYPE="int" LENGTH="10" UNSIGNED="true" NOTNULL="true" SEQUENCE="false" COMMENT="Foreign key linking to the question_attempts table." PREVIOUS="id" NEXT="feedback" />
         <FIELD NAME="feedback" TYPE="text" LENGTH="small" NOTNULL="true" SEQUENCE="false" COMMENT="the specific feedback generated by junit" PREVIOUS="questionattemptid" />
       </FIELDS>
       <KEYS>
-        <KEY NAME="primary" TYPE="primary" FIELDS="id" NEXT="questionattemptid"/>
-        <KEY NAME="questionattemptid" TYPE="foreign-unique" FIELDS="questionattemptid" REFTABLE="question_attempts" REFFIELDS="id" PREVIOUS="primary"/>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id" NEXT="questionattemptid" />
+        <KEY NAME="questionattemptid" TYPE="foreign-unique" FIELDS="questionattemptid" REFTABLE="question_attempts" REFFIELDS="id" PREVIOUS="primary" />
       </KEYS>
     </TABLE>
   </TABLES>

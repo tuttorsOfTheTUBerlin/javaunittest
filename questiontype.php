@@ -12,11 +12,6 @@ defined ( 'MOODLE_INTERNAL' ) || die ();
 
 require_once ($CFG->libdir . '/questionlib.php');
 
-define ( 'FEEDBACK_NOTHING', -1 );
-define ( 'FEEDBACK_ONLY_TIMES', 0 );
-define ( 'FEEDBACK_TIMES_COUNT_OF_TESTS', 1 );
-define ( 'FEEDBACK_ALL_EXCEPT_STACKTRACE', 2 );
-
 /**
  * The javaunittest question type.
  *
@@ -50,7 +45,19 @@ class qtype_javaunittest extends question_type {
                 'givencode',
                 'testclassname',
                 'junitcode',
-                'feedbacklevel' 
+                'solution_responsefieldlines',
+                'solution',
+                'signature',
+                'feedbacklevel_studentcompiler',
+                'feedbacklevel_studentsignature',
+                'feedbacklevel_junitcompiler',
+                'feedbacklevel_times',
+                'feedbacklevel_counttests',
+                'feedbacklevel_junitheader',
+                'feedbacklevel_assertstring',
+                'feedbacklevel_assertexpected',
+                'feedbacklevel_assertactual',
+                'feedbacklevel_junitcomplete'
         );
     }
     
@@ -87,20 +94,6 @@ class qtype_javaunittest extends question_type {
         return $choices;
     }
     
-    /**
-     *
-     * @return array of feedback levels for question edit page
-     */
-    public function feedback_levels() {
-        $levels = array (
-                FEEDBACK_NOTHING => get_string ( 'feedback_nothing', 'qtype_javaunittest' ),
-                FEEDBACK_ONLY_TIMES => get_string ( 'feedback_only_times', 'qtype_javaunittest' ),
-                FEEDBACK_TIMES_COUNT_OF_TESTS => get_string ( 'feedback_times_count_of_tests', 'qtype_javaunittest' ),
-                FEEDBACK_ALL_EXCEPT_STACKTRACE => get_string ( 'feedback_all_except_stacktrace', 'qtype_javaunittest' ) 
-        );
-        
-        return $levels;
-    }
     public function move_files($questionid, $oldcontextid, $newcontextid) {
         parent::move_files ( $questionid, $oldcontextid, $newcontextid );
         $fs = get_file_storage ();

@@ -1,0 +1,71 @@
+// this example requires having permission java.lang.RuntimePermission "accessDeclaredMembers" granted in the policy file
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.lang.String;
+import static java.lang.System.out;
+
+/**
+ * This class demonstrates how to search a given class for existing members and their modifiers.
+ *
+ * Can be done with any class, like HelloWorld insteat of java.lang.Integer.
+ * You can do the same in your junit tests to check students code.
+ *
+ * Use other methods like c.getMethods() insteat of c.getDeclaredFields() to get the class methods and so on...
+ * Invoke example: https://docs.oracle.com/javase/tutorial/reflect/member/methodInvocation.html
+ */
+
+public class FieldModifierCheck {
+ 
+    public static void main(String[] args) {
+        
+        String target = "java.lang.Integer";
+        String[] mods = {"public", "final"}; // choose some, ANDed
+            
+        try {
+
+            Class<?> c = Class.forName(target); // can throw Exception if not found
+            int searchMods = 0;
+            for (int i = 0; i < mods.length; i++) {
+                // searchMods is an Integer with stores the modifiers in different distinct bit
+                // positions... like a bitmap...
+                // see http://docs.oracle.com/javase/7/docs/api/java/lang/reflect/Modifier.html
+                // there are also status bits for interface and abstract
+                if ("public".equals(mods[i]))           searchMods |= Modifier.PUBLIC;
+                else if ("protected".equals(mods[i]))   searchMods |= Modifier.PROTECTED;
+                else if ("private".equals(mods[i]))     searchMods |= Modifier.PRIVATE;
+                else if ("static".equals(mods[i]))      searchMods |= Modifier.STATIC;
+                else if ("final".equals(mods[i]))       searchMods |= Modifier.FINAL;
+                else if ("transient".equals(mods[i]))   searchMods |= Modifier.TRANSIENT;
+                else if ("volatile".equals(mods[i]))    searchMods |= Modifier.VOLATILE;
+            }
+
+            Field[] fields = c.getDeclaredFields(); // grep all members
+            
+            // write header
+            out.format("Fields in Class '%s' containing one of these modifiers:  %s%n",
+                    c.getName(),
+                    Modifier.toString(searchMods));
+                    
+            // interate over Members, catch Modifiers and compare whether foundmods and searchmods
+            // are equal (ANDing it bitwise, then check if it matches searchmods)
+            boolean found = false;
+            for (Field f : fields) {
+                int foundMods = f.getModifiers();
+                if ((foundMods & searchMods) == searchMods) {
+                    out.format("%-8s %n", f.getName());
+                    found = true;
+                }
+            }
+
+            if (!found) {
+                out.format("No matching fields %n");
+            }
+
+        } catch (ClassNotFoundException x) {
+            
+            x.printStackTrace();
+
+        }
+    }
+
+}

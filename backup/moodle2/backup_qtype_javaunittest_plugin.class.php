@@ -31,7 +31,20 @@
                     'responsefieldlines',
                     'givencode',
                     'testclassname',
-                    'junitcode' 
+                    'junitcode',
+                    'solution_responsefieldlines',
+                    'solution',
+                    'signature',
+                    'feedbacklevel_studentcompiler',
+                    'feedbacklevel_studentsignature',
+                    'feedbacklevel_junitcompiler',
+                    'feedbacklevel_times',
+                    'feedbacklevel_counttests',
+                    'feedbacklevel_junitheader',
+                    'feedbacklevel_assertstring',
+                    'feedbacklevel_assertexpected',
+                    'feedbacklevel_assertactual',
+                    'feedbacklevel_junitcomplete'
             ) );
             
             // Now the own qtype tree.

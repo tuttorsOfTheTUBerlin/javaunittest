@@ -1,0 +1,1191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<!-- question: 0  -->
+  <question type="category">
+    <category>
+        <text>$module$/Default for JavaunittestExamples</text>
+
+    </category>
+  </question>
+
+<!-- question: 140  -->
+  <question type="javaunittest">
+    <name>
+      <text>Factorial (AssertStr)</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Implement a class <tt>Factorial.<br></tt>&nbsp;<br>The class contains a single Method <tt>public static double factorial(int i)</tt> that returns the faculty of an int.<br>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<br>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.0000000</penalty>
+    <hidden>0</hidden>
+    <responsefieldlines>20</responsefieldlines>
+    <givencode>public class Factorial {
+    public static double factorial ( int i ) {
+        if ( i == 0 ) return 1.0;
+        return i * factorial ( i - 1 );
+    }
+}</givencode>
+    <testclassname>FactorialTest</testclassname>
+    <junitcode><![CDATA[import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
+public class FactorialTest {
+
+	@Test
+	public void testFactorialA () {
+		assertEquals("Fakultätsfunktion ist fehlerhaft", 13, Factorial.factorial(0), 0.05 );
+    }
+	
+	@Test
+	public void testFactorialB () {
+		assertEquals("Fakultätsfunktion ist fehlerhaft", 19, Factorial.factorial(1), 0.05 );
+    }
+	
+	@Test
+	public void testFactorialC () {
+		assertEquals("Fakultätsfunktion ist fehlerhaft", 99, Factorial.factorial(2), 0.05 );
+    }
+
+}]]></junitcode>
+    <solution_responsefieldlines>0</solution_responsefieldlines>
+    <solution>class Factorial {
+    public static double factorial ( int i ) {
+        if ( i == 0 ) return 1.0;
+        return i * factorial ( i - 1 );
+    }
+}</solution>
+    <signature>class Factorial {
+	public static double factorial(int);
+}</signature>
+    <feedbacklevel_studentcompiler>1</feedbacklevel_studentcompiler>
+    <feedbacklevel_studentsignature>1</feedbacklevel_studentsignature>
+    <feedbacklevel_junitcompiler>1</feedbacklevel_junitcompiler>
+    <feedbacklevel_times>1</feedbacklevel_times>
+    <feedbacklevel_counttests>1</feedbacklevel_counttests>
+    <feedbacklevel_junitheader>1</feedbacklevel_junitheader>
+    <feedbacklevel_assertstring>1</feedbacklevel_assertstring>
+    <feedbacklevel_assertexpected>0</feedbacklevel_assertexpected>
+    <feedbacklevel_assertactual>0</feedbacklevel_assertactual>
+    <feedbacklevel_junitcomplete>0</feedbacklevel_junitcomplete>
+  </question>
+
+<!-- question: 141  -->
+  <question type="javaunittest">
+    <name>
+      <text>Factorial (AssertStrExpAct)</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Implement a class <tt>Factorial.<br></tt>&nbsp;<br>The class contains a single Method <tt>public static double factorial(int i)</tt> that returns the faculty of an int.<br>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<br>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.0000000</penalty>
+    <hidden>0</hidden>
+    <responsefieldlines>20</responsefieldlines>
+    <givencode>class Factorial {
+    public static double factorial ( int i ) {
+        if ( i == 0 ) return 1.0;
+        return i * factorial ( i*i*i*i - 1 );
+    }
+}</givencode>
+    <testclassname>FactorialTest</testclassname>
+    <junitcode><![CDATA[import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
+public class FactorialTest {
+
+	@Test
+	public void testFactorialA () {
+		assertEquals("Fakultätsfunktion ist fehlerhaft", 0, Factorial.factorial(0), 0.05 );
+    }
+	
+	@Test
+	public void testFactorialB () {
+		assertEquals("Fakultätsfunktion ist fehlerhaft", 2, Factorial.factorial(2), 0.05 );
+    }
+	
+	@Test
+	public void testFactorialC () {
+		assertEquals("Fakultätsfunktion ist fehlerhaft", 6, Factorial.factorial(3), 0.05 );
+    }
+
+}]]></junitcode>
+    <solution_responsefieldlines>0</solution_responsefieldlines>
+    <solution>class Factorial {
+    public static double factorial ( int i ) {
+        if ( i == 0 ) return 1.0;
+        return i * factorial ( i - 1 );
+    }
+}</solution>
+    <signature>class Factorial {
+	public static double factorial(int);
+}</signature>
+    <feedbacklevel_studentcompiler>1</feedbacklevel_studentcompiler>
+    <feedbacklevel_studentsignature>1</feedbacklevel_studentsignature>
+    <feedbacklevel_junitcompiler>0</feedbacklevel_junitcompiler>
+    <feedbacklevel_times>1</feedbacklevel_times>
+    <feedbacklevel_counttests>1</feedbacklevel_counttests>
+    <feedbacklevel_junitheader>1</feedbacklevel_junitheader>
+    <feedbacklevel_assertstring>1</feedbacklevel_assertstring>
+    <feedbacklevel_assertexpected>1</feedbacklevel_assertexpected>
+    <feedbacklevel_assertactual>1</feedbacklevel_assertactual>
+    <feedbacklevel_junitcomplete>0</feedbacklevel_junitcomplete>
+  </question>
+
+<!-- question: 142  -->
+  <question type="javaunittest">
+    <name>
+      <text>Factorial (CA, junitcomplete)</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Implement a class <tt>Factorial.<br></tt>&nbsp;<br>The class contains a single Method <tt>public static double factorial(int i)</tt> that returns the faculty of an int.<br>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<br>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.0000000</penalty>
+    <hidden>0</hidden>
+    <responsefieldlines>20</responsefieldlines>
+    <givencode>class Factorial {
+    public static double factorial ( int i ) {
+        if ( i == 0 ) return 1.0;
+        return i * factorial ( i - 1 );
+    }
+}</givencode>
+    <testclassname>FactorialTest</testclassname>
+    <junitcode><![CDATA[import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
+public class FactorialTest {
+
+	@Test
+	public void testFactorialA () {
+		assertEquals("Fakultätsfunktion ist fehlerhaft", 1, Factorial.factorial(0), 0.05 );
+    }
+	
+	@Test
+	public void testFactorialB () {
+		assertEquals("Fakultätsfunktion ist fehlerhaft", 1, Factorial.factorial(1), 0.05 );
+    }
+	
+	@Test
+	public void testFactorialC () {
+		assertEquals("Fakultätsfunktion ist fehlerhaft", 2, Factorial.factorial(2), 0.05 );
+    }
+
+}]]></junitcode>
+    <solution_responsefieldlines>0</solution_responsefieldlines>
+    <solution>class Factorial {
+    public static double factorial ( int i ) {
+        if ( i == 0 ) return 1.0;
+        return i * factorial ( i - 1 );
+    }
+}</solution>
+    <signature>class Factorial {
+	public static double factorial(int);
+}</signature>
+    <feedbacklevel_studentcompiler>1</feedbacklevel_studentcompiler>
+    <feedbacklevel_studentsignature>1</feedbacklevel_studentsignature>
+    <feedbacklevel_junitcompiler>1</feedbacklevel_junitcompiler>
+    <feedbacklevel_times>1</feedbacklevel_times>
+    <feedbacklevel_counttests>1</feedbacklevel_counttests>
+    <feedbacklevel_junitheader>1</feedbacklevel_junitheader>
+    <feedbacklevel_assertstring>1</feedbacklevel_assertstring>
+    <feedbacklevel_assertexpected>1</feedbacklevel_assertexpected>
+    <feedbacklevel_assertactual>1</feedbacklevel_assertactual>
+    <feedbacklevel_junitcomplete>1</feedbacklevel_junitcomplete>
+  </question>
+
+<!-- question: 139  -->
+  <question type="javaunittest">
+    <name>
+      <text>Factorial (JUnit Compile Error)</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Implement a class <tt>Factorial.<br></tt>&nbsp;<br>The class contains a single Method <tt>public static double factorial(int i)</tt> that returns the faculty of an int.<br>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<br>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.0000000</penalty>
+    <hidden>0</hidden>
+    <responsefieldlines>20</responsefieldlines>
+    <givencode>class Factorial {
+    public static double factorial ( int i ) {
+        if ( i == 0 ) return 1.0;
+        return i * factorial ( i - 1 );
+    }
+}</givencode>
+    <testclassname>FactorialTest</testclassname>
+    <junitcode><![CDATA[import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
+public class FactorialTest {
+
+	@Test
+	public void testFactorialA () {
+		assertEquals("Fakultätsfunktion ist fehlerhaft", 1, Factorial.factorial(0), 0.05 )
+    }
+
+}]]></junitcode>
+    <solution_responsefieldlines>0</solution_responsefieldlines>
+    <solution>class Factorial {
+    public static double factorial ( int i ) {
+        if ( i == 0 ) return 1.0;
+        return i * factorial ( i - 1 );
+    }
+}</solution>
+    <signature>class Factorial {
+	public static double factorial(int);
+}</signature>
+    <feedbacklevel_studentcompiler>1</feedbacklevel_studentcompiler>
+    <feedbacklevel_studentsignature>1</feedbacklevel_studentsignature>
+    <feedbacklevel_junitcompiler>1</feedbacklevel_junitcompiler>
+    <feedbacklevel_times>1</feedbacklevel_times>
+    <feedbacklevel_counttests>1</feedbacklevel_counttests>
+    <feedbacklevel_junitheader>1</feedbacklevel_junitheader>
+    <feedbacklevel_assertstring>1</feedbacklevel_assertstring>
+    <feedbacklevel_assertexpected>1</feedbacklevel_assertexpected>
+    <feedbacklevel_assertactual>1</feedbacklevel_assertactual>
+    <feedbacklevel_junitcomplete>0</feedbacklevel_junitcomplete>
+  </question>
+
+<!-- question: 138  -->
+  <question type="javaunittest">
+    <name>
+      <text>Factorial (Signature Missmatch)</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Implement a class <tt>Factorial.<br></tt>&nbsp;<br>The class contains a single Method <tt>public static double factorial(int i)</tt> that returns the faculty of an int.<br>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<br>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.0000000</penalty>
+    <hidden>0</hidden>
+    <responsefieldlines>20</responsefieldlines>
+    <givencode><![CDATA[class Factorial {
+    public static void factorial ( int i ) {
+        if ( i == 0 ) System.out.println ( "Result: " + 1.0 );
+        System.out.println ( "Result: " + i );
+    }
+}]]></givencode>
+    <testclassname>FactorialTest</testclassname>
+    <junitcode><![CDATA[import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
+public class FactorialTest {
+
+	@Test
+	public void testFactorialA () {
+		assertEquals("Fakultätsfunktion ist fehlerhaft", 1, Factorial.factorial(0), 0.05 );
+    }
+
+}]]></junitcode>
+    <solution_responsefieldlines>15</solution_responsefieldlines>
+    <solution>class Factorial {
+    public static double factorial ( int i ) {
+        if ( i == 0 ) return 1.0;
+        return i * factorial ( i - 1 );
+    }
+}</solution>
+    <signature>class Factorial {
+	public static double factorial(int);
+}</signature>
+    <feedbacklevel_studentcompiler>1</feedbacklevel_studentcompiler>
+    <feedbacklevel_studentsignature>1</feedbacklevel_studentsignature>
+    <feedbacklevel_junitcompiler>1</feedbacklevel_junitcompiler>
+    <feedbacklevel_times>1</feedbacklevel_times>
+    <feedbacklevel_counttests>1</feedbacklevel_counttests>
+    <feedbacklevel_junitheader>1</feedbacklevel_junitheader>
+    <feedbacklevel_assertstring>1</feedbacklevel_assertstring>
+    <feedbacklevel_assertexpected>1</feedbacklevel_assertexpected>
+    <feedbacklevel_assertactual>1</feedbacklevel_assertactual>
+    <feedbacklevel_junitcomplete>0</feedbacklevel_junitcomplete>
+  </question>
+
+<!-- question: 137  -->
+  <question type="javaunittest">
+    <name>
+      <text>Factorial (Student Code not Compiling)</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Implement a class <tt>Factorial.<br></tt>&nbsp;<br>The class contains a single Method <tt>public static double factorial(int i)</tt> that returns the faculty of an int.<br>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<br>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.0000000</penalty>
+    <hidden>0</hidden>
+    <responsefieldlines>20</responsefieldlines>
+    <givencode>class Factorial {
+    public static double factorial ( int i ) {
+        if ( i == 0 ) return 1.0;
+        return i * factorial ( i - 1 )
+    }
+}</givencode>
+    <testclassname>FactorialTest</testclassname>
+    <junitcode><![CDATA[import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
+public class FactorialTest {
+
+	@Test
+	public void testFactorialA () {
+		assertEquals("Fakultätsfunktion ist fehlerhaft", 1, Factorial.factorial(0), 0.05 );
+    }
+
+}]]></junitcode>
+    <solution_responsefieldlines>15</solution_responsefieldlines>
+    <solution>class Factorial {
+    public static double factorial ( int i ) {
+        if ( i == 0 ) return 1.0;
+        return i * factorial ( i - 1 );
+    }
+}</solution>
+    <signature>class Factorial {
+	public static double factorial(int);
+}</signature>
+    <feedbacklevel_studentcompiler>1</feedbacklevel_studentcompiler>
+    <feedbacklevel_studentsignature>1</feedbacklevel_studentsignature>
+    <feedbacklevel_junitcompiler>1</feedbacklevel_junitcompiler>
+    <feedbacklevel_times>1</feedbacklevel_times>
+    <feedbacklevel_counttests>1</feedbacklevel_counttests>
+    <feedbacklevel_junitheader>1</feedbacklevel_junitheader>
+    <feedbacklevel_assertstring>1</feedbacklevel_assertstring>
+    <feedbacklevel_assertexpected>1</feedbacklevel_assertexpected>
+    <feedbacklevel_assertactual>1</feedbacklevel_assertactual>
+    <feedbacklevel_junitcomplete>0</feedbacklevel_junitcomplete>
+  </question>
+
+<!-- question: 143  -->
+  <question type="javaunittest">
+    <name>
+      <text>Hello World</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Complete the class <tt>HelloWorld</tt>:</p><ul><li>Implement a <tt>main</tt> method which prints<i> Hello World!</i> to the standart output channel<br></li><li>Implement a second method <tt>public static void notMyDay()</tt> which prints <i>Bad weather!</i> to the standart error channel<br></li></ul>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.0000000</penalty>
+    <hidden>0</hidden>
+    <responsefieldlines>20</responsefieldlines>
+    <givencode><![CDATA[public class HelloWorld {
+	
+	// TODO: put your main method here...
+	public static void main(String[] args) {
+		System.out.println("Hello World!");
+	}
+	
+	// TODO: put your notMyDay method here...
+	public static void notMyDay() {
+		System.err.println("Bad Weather!");
+	}
+}]]></givencode>
+    <testclassname>HelloWorldTest</testclassname>
+    <junitcode><![CDATA[// we require having permission java.lang.RuntimePermission "setIO" granted by policy file.
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
+
+import org.junit.Test;
+import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.containsString;
+
+public class HelloWorldTest {
+	
+	@Test
+	public void mainPrintsHelloWorld() {
+		ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+		PrintStream newStdOut = new PrintStream(outContent);
+		System.setOut(newStdOut);
+		HelloWorld.main(null);
+		assertThat("Your main method is broken...", outContent.toString(), containsString("Hello World!"));
+		outContent.reset();
+	}
+	
+	@Test
+	public void otherMethod() {
+		ByteArrayOutputStream errContent = new ByteArrayOutputStream();
+		PrintStream newStdErr = new PrintStream(errContent);
+		System.setOut(newStdErr);
+		HelloWorld.main(null);
+		assertThat("Your notMyDay function is broken...", errContent.toString(), containsString("Hello World!"));
+		errContent.reset();
+	}
+	
+}]]></junitcode>
+    <solution_responsefieldlines>0</solution_responsefieldlines>
+    <solution><![CDATA[public class HelloWorld {
+	
+	// TODO: put your main method here...
+	public static void main(String[] args) {
+		System.out.println("Hello World!");
+	}
+	
+	// TODO: put your notMyDay method here...
+	public static void notMyDay() {
+		System.err.println("Bad Weather!");
+	}
+}]]></solution>
+    <signature>public class HelloWorld {
+	public static void main(java.lang.String[]);
+	public static void notMyDay();
+}</signature>
+    <feedbacklevel_studentcompiler>1</feedbacklevel_studentcompiler>
+    <feedbacklevel_studentsignature>1</feedbacklevel_studentsignature>
+    <feedbacklevel_junitcompiler>1</feedbacklevel_junitcompiler>
+    <feedbacklevel_times>1</feedbacklevel_times>
+    <feedbacklevel_counttests>1</feedbacklevel_counttests>
+    <feedbacklevel_junitheader>0</feedbacklevel_junitheader>
+    <feedbacklevel_assertstring>1</feedbacklevel_assertstring>
+    <feedbacklevel_assertexpected>1</feedbacklevel_assertexpected>
+    <feedbacklevel_assertactual>1</feedbacklevel_assertactual>
+    <feedbacklevel_junitcomplete>0</feedbacklevel_junitcomplete>
+  </question>
+
+<!-- question: 144  -->
+  <question type="javaunittest">
+    <name>
+      <text>MyLinkedList</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p><b>Task:</b> Complete missing parts (marked as <tt>TODO</tt>) in the <tt>MyLinkedList</tt> class.</p><ol><li>&nbsp;&nbsp; public int size(): Returns the number of saved elements<br><br></li><li>&nbsp;&nbsp; public void addLast(&lt;G&gt; data): Adds a new element at the list end</li><li>&nbsp;&nbsp; public G getLast(): Returns the data of the last element, throw a NoSuchElementException if there is no element</li><li>&nbsp;&nbsp; public G removeLast(): Returns the data of the last element and removes the element, throw a NoSuchElementException if there is no element<br><br></li><li>&nbsp;&nbsp; public get(int pos): Returns the data of the element on position pos, throws an IndexOutOfBoundsException if there is no element</li><li>&nbsp;&nbsp; public G remove(int pos): Returns the data of the element on position pos and removes the element, throws an IndexOutOfBoundsException if there is no element</li><li>&nbsp;&nbsp; public G remove(&lt;G&gt; data): Removes the element with the given data, throws an NoSuchElementException if 
+there is no element<br><br></li><li>&nbsp;&nbsp; public String toString(): Generates a String representation of the list. Match exactly the following examples:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Empty list should return: <i>MyLinkedList()</i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; One Element list should return: <i>MyLinkedList(1)</i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Three Element list should return: <i>MyLinkedList(1, 2, 3)<br><br></i></li><li>&nbsp;&nbsp; public void print(): Calls the toString method and prints the return value to the Standard Output<br></li></ol><p><b>Hint:</b> You can copy the code and test it local aswell.<br></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.0000000</penalty>
+    <hidden>0</hidden>
+    <responsefieldlines>30</responsefieldlines>
+    <givencode><![CDATA[/**
+  * This file contains a junit example for the moodle qtype javaunittest plugin.
+  *
+  * @package      qtype
+  * @subpackage   javaunittest
+  * @author       Michael Rumler, rumler@ni.tu-berlin.de
+  * @license      http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+  * @link         https://github.com/tuttorsOfTheTUBerlin/javaunittest/tree/master/EXAMPLE_FILES/LinkedList/
+  */
+
+import java.util.*;
+
+/** 
+  * Collection class implementing a single chained list
+  */
+public class MyLinkedList<G> implements Iterable<G> {
+    private MyNode<G> head;
+
+ /**
+    * static nested class for list elements
+    */
+    private static class MyNode<G> {
+        private G data;
+        private MyNode<G> next;
+
+        public MyNode(G data, MyNode<G> next) {
+            this.data = data;
+            this.next = next;
+        }
+    }
+
+ /**
+    * Constructor, constructs an empty list
+    */
+    public MyLinkedList() {
+        this.head = null;
+    }
+
+ /**
+    * Checks whether the list has elements
+    * @return boolean true if list is empty
+    */
+    public boolean empty() {
+        return this.head == null;
+    }
+
+ /**
+    * Returns the size of the list
+    * @return int list size
+    */
+    public int size() {
+        // TODO
+        return -1;
+    }
+
+ /**
+    * Inserts data at the beginning of the list
+    * @param <G> data the data to insert
+    */
+    public void addFirst(G data) {
+        this.head = new MyNode<G>(data, this.head);
+    }
+
+ /**
+    * Returns data of the first element in the list
+    * @throws NoSuchElementException
+    * @return <G> data of the first element
+    */
+    public G getFirst() {
+        if (this.head == null) 
+            throw new NoSuchElementException();
+        return this.head.data;
+    }
+
+ /**
+    * Removes the first element in the list
+    * @throws NoSuchElementException
+    * @return <G> data of the first element
+    */
+    public G removeFirst() {
+        if (this.head == null)
+            throw new NoSuchElementException();
+        G tmp = getFirst();
+        this.head = this.head.next;
+        return tmp;
+    }
+
+ /**
+    * Inserts data to the end of the list.
+    * @param <G> data the data to insert
+    */
+    public void addLast(G data) {
+        // TODO
+    }
+
+ /**
+    * Returns the last element in the list.
+    * @throws NoSuchElementException
+    * @return <G> data of the last element
+    */
+    public G getLast() {
+        // TODO
+        return null;
+    }
+
+ /**
+    * Removes the last element in the list.
+    * @throws NoSuchElementException
+    * @return <G> data of the last element
+    */
+    public G removeLast() {
+        // TODO
+        return null;
+    }
+
+ /**
+    * Returns the data at the specified position in the list.
+    * @throws IndexOutOfBoundsException
+    * @param int pos position
+    * @return <G> data at position pos
+    */
+    public G get(int pos) {
+        // TODO
+        return null;
+    }
+     
+  /**
+     * Removes the data at the specified position in the list.
+     * @throws IndexOutOfBoundsException
+     * @param int pos position
+     * @return <G> data at position pos
+     */
+     public G remove(int pos) {
+        // TODO
+        return null;
+     }
+
+  /**
+     * Removes the given data from the list
+     * @throws NoSuchElementException
+     * @param String data the data to remove
+     * @return <G> data at position pos
+     */
+     public G remove(G data) {
+        // TODO
+        return null;
+     }
+     
+ /**
+    * Removes all elements from the list
+    */
+    public void clear() {
+        this.head = null;
+    }
+
+ /**
+    * Returns true if this list contains an element with the given data
+    * @return boolean true if data in list
+    */
+    public boolean contains(G data) {
+        for (G tmp : this) // use iterable
+            if (tmp.equals(data)) 
+                return true;
+        return false;
+    }
+
+ /**
+    * Returns a string representation of the list
+    * @return String string representation
+    */
+    public String toString() {
+        // TODO
+        return null;
+    }
+	
+ /**
+    * Prints a string representation of the list to the stdout
+    */
+    public void print() {
+        System.out.println(toString());
+    }
+
+ /**
+    * Method to deliver the Iterator for iterable
+    */
+    public Iterator<G> iterator() {
+        return new MyLinkedListIterator();
+    }
+
+ /**
+    * Inner class for Iterator implementing all Iterator<> declarations
+    */
+    private class MyLinkedListIterator implements Iterator<G> {
+        private MyNode<G> next;
+
+        public MyLinkedListIterator() {
+            this.next = head;
+        }
+
+        public boolean hasNext() {
+            return this.next != null;
+        }
+
+        public G next() {
+            if (!hasNext()) 
+                throw new NoSuchElementException();
+            G data = this.next.data;
+            this.next = this.next.next;
+            return data;
+        }
+
+        public void remove() { 
+            throw new UnsupportedOperationException(); 
+        }
+    }
+
+}]]></givencode>
+    <testclassname>MyLinkedListTest</testclassname>
+    <junitcode><![CDATA[/**
+  * This file contains a junit example for the moodle qtype javaunittest plugin.
+  *
+  * Note: I have never completely tested this solution, just wrote it down.
+  *
+  * @package      qtype
+  * @subpackage   javaunittest
+  * @author       Michael Rumler, rumler@ni.tu-berlin.de
+  * @license      http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+  * @link         https://github.com/tuttorsOfTheTUBerlin/javaunittest/tree/master/EXAMPLE_FILES/LinkedList/
+  */
+
+import java.util.*;                      // Iterator
+import org.junit.Test;                   // @Test Annotation
+import static org.junit.Assert.*;        // assertEquals(), assertNotNull(), ... 
+import static org.hamcrest.CoreMatchers.containsString; // Handy for checking stream content
+
+// For Stdout redirecting
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
+
+// Execution Order
+import org.junit.FixMethodOrder;
+import org.junit.runners.MethodSorters;
+
+/* Run test cases in order of method names ascending
+ * since we want to check constructor first, ...
+ * Default order is random.
+ */
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+
+/* For this test you should have granted the following permissions in the policy file:
+ *   permission java.lang.RuntimePermission "setIO";         // for testing print()
+ *   permission java.lang.RuntimePermission "getStackTrace"; // for feedback in error case
+ */
+
+public class MyLinkedListTest {
+    
+    /* For this implementation: 
+     * Points to the last absolved test. No need to run a test behind a test that failed already.
+     * (Would procude a lot of output and is nonsense to test addFirst() it the constructor test failed).
+     * Note: This is not always usefull. F.e. you may have a couple of entity classes the students have to
+     * implement... those can (and probably should be) tested parallel, and should definitly if you do not allow 
+     * multiple tries based on the last try (adaptive mode as quiz behavior setting).
+     */
+    private static char stage = 'A';
+    
+    /* If we do not place signature to check all members and methods better do not access
+     * methods and members direct by call. They might not be there because the student made
+     * a mistake and in consequence your junit test class would not compile.
+     * So either place the expected signature, or turn on JUnit Testclass Compilerfeedback
+     * (both settings below), or use reflections to check that the members and methods exist first.
+     * Here we use the expected signature, so we do not need a very first @Test asserting that all
+     * tested methods and members are found via reflection.
+     */
+    
+    @Test
+    public void A_construct() {
+        if (this.stage < 'A') fail("Test skipped because of previous failures");
+        MyLinkedList<String> l = new MyLinkedList<String>();
+        assertNotNull("Constructor call did not create a MyLinkedList", l);
+        this.stage = 'B';
+    }
+    
+    @Test
+    public void B_empty() {
+        if (this.stage < 'B') fail("Test skipped because of previous failures");
+        MyLinkedList<String> l = new MyLinkedList<String>();
+        assertTrue("New constructed MyLinkedList was not empty", l.empty());
+        this.stage = 'C';
+    }
+    
+    @Test
+    public void C_addGetFirst() {
+        if (this.stage < 'C') fail("Test skipped because of previous failures");
+        MyLinkedList<String> l = new MyLinkedList<String>();
+        l.addFirst("Roland");
+        assertEquals("Adding and getting first added data does not work as expected", "Roland", l.getFirst());
+        l.addFirst("Alain");
+        l.addFirst("Cuthbert");
+        assertEquals("Adding and getting first added data does not work as expected when adding multiple entrys as first", "Cuthbert", l.getFirst());
+        this.stage = 'D';
+    }
+    
+    @Test
+    public void D_size() {
+        if (this.stage < 'D') fail("Test skipped because of previous failures");
+        MyLinkedList<String> l = new MyLinkedList<String>();
+        assertEquals("Size method returns wrong size", 0, l.size());
+        l.addFirst("Roland");
+        l.addFirst("Alain");
+        l.addFirst("Cuthbert");
+        assertEquals("Size method returns wrong size after adding some elements as first", 3, l.size());
+        this.stage = 'E';
+    }
+    
+    // TODO: test other add and get and remove functions...
+    
+    @Test
+    public void E_toString() {
+        if (this.stage < 'E') fail("Test skipped because of previous failures");
+        MyLinkedList<String> l = new MyLinkedList<String>();
+        l.addFirst("Roland");
+        l.addFirst("Alain");
+        l.addFirst("Cuthbert");
+        assertEquals("Your toString method does not work as expected...",
+                     "MyLinkedList(Cuthbert, Alain, Roland)", 
+                     l.toString());
+        this.stage = 'F';
+    }
+    
+    @Test
+    public void F_print() {
+        if (this.stage < 'F') fail("Test skipped because of previous failures");
+        MyLinkedList<String> l = new MyLinkedList<String>();
+        l.addFirst("Roland");
+        l.addFirst("Alain");
+        l.addFirst("Cuthbert");
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        PrintStream newStdOut = new PrintStream(outContent);
+        System.setOut(newStdOut);
+        l.print();
+        assertThat("Your print method is broken...", 
+                   outContent.toString(), 
+                   containsString("MyLinkedList(Cuthbert, Alain, Roland)"));
+        outContent.reset();
+        this.stage = 'G';
+    }
+    
+    @Test
+    public void G_iterator() {
+        if (this.stage < 'G') fail("Test skipped because of previous failures");
+        MyLinkedList<String> l = new MyLinkedList<String>();
+        l.addLast("Roland");
+        l.addLast("Cuthbert");
+        Iterator itr = l.iterator();
+        assertTrue("Iterator hasNext() does not work", itr.hasNext());
+        assertEquals("Iterator next() does not work", "Roland", itr.next());
+        assertEquals("Iterator next() does not work", "Cuthbert", itr.next());  
+        try {
+            itr.next();
+            fail("Iterator next() did not throw an exception when there was no next");
+        } catch (NoSuchElementException e) {
+        }
+        // Note that you can set a complete @Test method to expect an exception: @Test(expected = NoSuchElementException.class)
+        this.stage = 'H';
+    }
+    
+}]]></junitcode>
+    <solution_responsefieldlines>0</solution_responsefieldlines>
+    <solution><![CDATA[/**
+  * This file contains a junit example for the moodle qtype javaunittest plugin.
+  *
+  * Note: I have never completely tested this solution, just wrote it down.
+  *
+  * @package      qtype
+  * @subpackage   javaunittest
+  * @author       Michael Rumler, rumler@ni.tu-berlin.de
+  * @license      http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+  * @link         https://github.com/tuttorsOfTheTUBerlin/javaunittest/tree/master/EXAMPLE_FILES/LinkedList/
+  */
+
+import java.util.*;
+
+/** 
+  * Collection class implementing a single chained list
+  */
+public class MyLinkedList<G> implements Iterable<G> {
+    private MyNode<G> head;
+
+ /**
+    * static nested class for list elements
+    */
+    private static class MyNode<G> {
+        private G data;
+        private MyNode<G> next;
+
+        public MyNode(G data, MyNode<G> next) {
+            this.data = data;
+            this.next = next;
+        }
+    }
+
+ /**
+    * Constructor, constructs an empty list
+    */
+    public MyLinkedList() {
+        this.head = null;
+    }
+
+ /**
+    * Checks whether the list has elements
+    * @return boolean true if list is empty
+    */
+    public boolean empty() {
+        return this.head == null;
+    }
+
+ /**
+    * Returns the size of the list
+    * @return int list size
+    */
+    public int size() {
+        int count = 0;
+        MyNode<G> tmp = this.head;
+        while (tmp != null) {
+            count++;
+            tmp = tmp.next;
+        }
+        return count;
+    }
+
+ /**
+    * Inserts data at the beginning of the list
+    * @param <G> data the data to insert
+    */
+    public void addFirst(G data) {
+        this.head = new MyNode<G>(data, this.head);
+    }
+
+ /**
+    * Returns data of the first element in the list
+    * @throws NoSuchElementException
+    * @return <G> data of the first element
+    */
+    public G getFirst() {
+        if (this.head == null) 
+            throw new NoSuchElementException();
+        return this.head.data;
+    }
+
+ /**
+    * Removes the first element in the list
+    * @throws NoSuchElementException
+    * @return <G> data of the first element
+    */
+    public G removeFirst() {
+        if (this.head == null)
+             throw new NoSuchElementException();
+        G tmp = getFirst();
+        this.head = this.head.next;
+        return tmp;
+    }
+
+ /**
+    * Inserts data to the end of the list.
+    * @param <G> data the data to insert
+    */
+    public void addLast(G data) {
+        if (head == null)
+            addFirst(data);
+        else {
+            MyNode<G> tmp = this.head;
+            while (tmp.next != null)
+                tmp = tmp.next;
+            tmp.next = new MyNode<G>(data, null);
+        }
+    }
+
+ /**
+    * Returns the last element in the list.
+    * @throws NoSuchElementException
+    * @return <G> data of the last element
+    */
+    public G getLast() {
+        if (this.head == null) 
+            throw new NoSuchElementException();
+        MyNode<G> tmp = this.head;
+        while (tmp.next != null) 
+            tmp = tmp.next;
+        return tmp.data;
+    }
+
+ /**
+    * Removes the last element in the list.
+    * @throws NoSuchElementException
+    * @return <G> data of the last element
+    */
+    public G removeLast() {
+        if (this.head == null) 
+            throw new NoSuchElementException();
+        if (size() == 1) {
+            G data = this.head.data;
+            this.head = null;
+            return data;
+        }
+        MyNode<G> tmpPrev = head;
+        MyNode<G> tmp = this.head.next;
+        while(tmp.next != null) {
+            tmpPrev = tmp;
+            tmp = tmp.next;
+
+        }
+        G data = tmp.data;
+        tmpPrev.next = null;
+        return tmp.data;
+    }
+
+ /**
+    * Returns the data at the specified position in the list.
+    * @throws IndexOutOfBoundsException
+    * @param int pos position
+    * @return <G> data at position pos
+    */
+    public G get(int pos) {
+        if (this.head == null) 
+            throw new IndexOutOfBoundsException();
+        MyNode<G> tmp = this.head;
+        for (int i = 0; i < pos; i++) {
+            if (tmp.next == null)
+                throw new IndexOutOfBoundsException();
+            tmp = tmp.next;
+        }
+        return tmp.data;
+    }
+     
+  /**
+     * Removes the data at the specified position in the list.
+     * @throws IndexOutOfBoundsException
+     * @param int pos position
+     * @return <G> data at position pos
+     */
+     public G remove(int pos) {
+          if (this.head == null)
+                throw new IndexOutOfBoundsException();
+          if (pos == 0) {
+                G data = this.head.data;
+                this.head = null;
+                return data;
+          }
+          MyNode<G> tmpPrev = head;
+          MyNode<G> tmp = this.head.next;
+          for (int i = 1; i < pos; i++) {
+            if (tmp.next == null)
+                     throw new IndexOutOfBoundsException();
+                tmpPrev = tmp;
+                tmp = tmp.next;
+          }
+          G data = tmp.data;
+          tmpPrev.next = null;
+          return tmp.data;
+     }
+
+  /**
+     * Removes the given data from the list
+     * @throws NoSuchElementException
+     * @param String data the data to remove
+     * @return <G> data at position pos
+     */
+     public G remove(G data) {
+          if (this.head == null)
+                throw new NoSuchElementException();
+          if (size() == 1)
+            if (this.head != data)
+                throw new NoSuchElementException();
+          MyNode<G> tmpPrev = head;
+          MyNode<G> tmp = this.head.next;
+          for (int i = 1; i < size(); i++) {
+            if (tmp.data == data) {
+                  G ret = tmp.data;
+                  tmpPrev.next = null;
+                  return ret;
+            }
+            if (tmp.next == null)
+                throw new NoSuchElementException();
+                tmpPrev = tmp;
+                tmp = tmp.next;
+          }
+        throw new NoSuchElementException();
+     }
+     
+ /**
+    * Removes all elements from the list
+    */
+    public void clear() {
+        this.head = null;
+    }
+
+ /**
+    * Returns true if this list contains an element with the given data
+    * @return boolean true if data in list
+    */
+    public boolean contains(G data) {
+        for (G tmp : this) // use iterable
+            if (tmp.equals(data)) 
+                return true;
+        return false;
+    }
+
+ /**
+    * Returns a string representation of the list
+    * @return String string representation
+    */
+    public String toString() {
+        String result = "MyLinkedList(";
+        if (!empty()) {
+            for (G tmp : this)
+                result += tmp + ", ";
+            result = result.substring(0, result.length()-2); // remove last ", "
+        }
+        return result + ")";
+    }
+    
+ /**
+    * Prints a string representation of the list to the stdout
+    */
+    public void print() {
+        System.out.println(toString());
+    }
+
+ /**
+    * Method to deliver the Iterator for iterable
+    */
+    public Iterator<G> iterator() {
+        return new MyLinkedListIterator();
+    }
+
+ /**
+    * Inner class for Iterator implementing all Iterator<> declarations
+    */
+    private class MyLinkedListIterator implements Iterator<G> {
+        private MyNode<G> next;
+
+        public MyLinkedListIterator() {
+            this.next = head;
+        }
+
+        public boolean hasNext() {
+            return this.next != null;
+        }
+
+        public G next() {
+            if (!hasNext()) 
+                throw new NoSuchElementException();
+            G data = this.next.data;
+            this.next = this.next.next;
+            return data;
+        }
+
+        public void remove() { 
+            throw new UnsupportedOperationException(); 
+        }
+    }
+
+}]]></solution>
+    <signature><![CDATA[public class MyLinkedList<G> implements java.lang.Iterable<G> {
+  private MyLinkedList$MyNode<G> head;
+  public MyLinkedList();
+  public boolean empty();
+  public int size();
+  public void addFirst(G);
+  public G getFirst();
+  public G removeFirst();
+  public void addLast(G);
+  public G getLast();
+  public G removeLast();
+  public G get(int);
+  public G remove(int);
+  public G remove(G);
+  public void clear();
+  public boolean contains(G);
+  public java.lang.String toString();
+  public java.util.Iterator<G> iterator();
+}
+
+class MyLinkedList$MyNode<G> {
+  private G data;
+  private MyLinkedList$MyNode<G> next;
+  public MyLinkedList$MyNode(G, MyLinkedList$MyNode<G>);
+}
+
+class MyLinkedList$MyLinkedListIterator implements java.util.Iterator<G> {
+  private MyLinkedList$MyNode<G> next;
+  public MyLinkedList$MyLinkedListIterator(MyLinkedList);
+  public boolean hasNext();
+  public G next();
+  public void remove();
+}]]></signature>
+    <feedbacklevel_studentcompiler>1</feedbacklevel_studentcompiler>
+    <feedbacklevel_studentsignature>1</feedbacklevel_studentsignature>
+    <feedbacklevel_junitcompiler>1</feedbacklevel_junitcompiler>
+    <feedbacklevel_times>1</feedbacklevel_times>
+    <feedbacklevel_counttests>1</feedbacklevel_counttests>
+    <feedbacklevel_junitheader>0</feedbacklevel_junitheader>
+    <feedbacklevel_assertstring>1</feedbacklevel_assertstring>
+    <feedbacklevel_assertexpected>1</feedbacklevel_assertexpected>
+    <feedbacklevel_assertactual>1</feedbacklevel_assertactual>
+    <feedbacklevel_junitcomplete>1</feedbacklevel_junitcomplete>
+  </question>
+
+</quiz>

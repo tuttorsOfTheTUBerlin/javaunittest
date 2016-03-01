@@ -9,7 +9,7 @@
 
 .que.javaunittest textarea.qtype_javaunittest_response.qtype_javaunittest_monospaced {
     white-space: pre;
-    font-family: Andale Mono, Monaco, Courier New, DejaVu Sans Mono,monospace;
+    font-family: Andale Mono, Monaco, Courier New, DejaVu Sans Mono, monospace;
 }
 
 .que.javaunittest .qtype_javaunittest_response {
@@ -24,6 +24,34 @@
     width: 100%;
 }
 
-#id_givencode, #id_junitcode, #id_testclassname, .qtype_javaunittest_plain.qtype_javaunittest_response {
+#id_givencode, #id_junitcode, #id_testclassname, #id_solution, #id_signature, .qtype_javaunittest_plain.qtype_javaunittest_response {
     font-family: "Courier New", Courier, monospace;
+}
+
+.feedback_assert_table {
+	width: 100%
+}
+
+.feedback_assert_th_str {
+	width: 50%;
+	vertical-align: baseline;
+}
+
+.feedback_assert_th_val {
+	width: 25%;
+	text-align: right;
+	vertical-align: baseline;
+}
+
+.feedback_assert_td_str {
+	width: 50%;
+	vertical-align: baseline;
+	font-family: "Courier New", Courier, monospace;
+}
+
+.feedback_assert_td_val {
+	width: 25%;
+	text-align: right;
+	vertical-align: baseline;
+	font-family: "Courier New", Courier, monospace;
 }

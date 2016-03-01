@@ -11,6 +11,21 @@ defined ( 'MOODLE_INTERNAL' ) || die ();
 
 if ( $ADMIN->fulltree ) {
     
+    // appearance
+    $settings->add (
+            new admin_setting_heading ( 'apperance',
+                    get_string ( 'apperance_heading', 'qtype_javaunittest' ), '' ) );
+    
+    // editor
+    $options = array();
+    $options['codemirror'] = 'CodeMirror Editor';
+    $options['enabletab'] = 'EnableTab Textarea';
+    $options['simple'] = 'Simple Textarea';
+    $settings->add (
+            new admin_setting_configselect ( 'qtype_javaunittest/editor',
+                    get_string ( 'editor', 'qtype_javaunittest' ),
+                    get_string ( 'editor_desc', 'qtype_javaunittest' ), 'codemirror', $options ) );
+    
     // limits
     $settings->add ( 
             new admin_setting_heading ( 'limits', 
@@ -61,6 +76,10 @@ if ( $ADMIN->fulltree ) {
     $settings->add ( 
             new admin_setting_configexecutable ( 'qtype_javaunittest/pathjavac', 
                     get_string ( 'pathjavac', 'qtype_javaunittest' ), '', '/usr/lib/jvm/java-7-openjdk-amd64/bin/javac' ) );
+    
+    $settings->add (
+            new admin_setting_configexecutable ( 'qtype_javaunittest/pathjavap',
+                    get_string ( 'pathjavap', 'qtype_javaunittest' ), '', '/usr/lib/jvm/java-7-openjdk-amd64/bin/javap' ) );
     
     $settings->add ( 
             new admin_setting_configexecutable ( 'qtype_javaunittest/pathjava', 
