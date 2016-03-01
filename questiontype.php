@@ -45,7 +45,6 @@ class qtype_javaunittest extends question_type {
                 'givencode',
                 'testclassname',
                 'junitcode',
-                'solution_responsefieldlines',
                 'solution',
                 'signature',
                 'feedbacklevel_studentcompiler',
