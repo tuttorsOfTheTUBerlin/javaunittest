@@ -38,17 +38,17 @@ public class FactorialTest {
 
 	@Test
 	public void testFactorialA () {
-		assertEquals("Fakultätsfunktion ist fehlerhaft", 13, Factorial.factorial(0), 0.05 );
+		assertEquals("factorial method has bugs", 13, Factorial.factorial(0), 0.05 );
     }
 	
 	@Test
 	public void testFactorialB () {
-		assertEquals("Fakultätsfunktion ist fehlerhaft", 19, Factorial.factorial(1), 0.05 );
+		assertEquals("factorial method has bugs", 19, Factorial.factorial(1), 0.05 );
     }
 	
 	@Test
 	public void testFactorialC () {
-		assertEquals("Fakultätsfunktion ist fehlerhaft", 99, Factorial.factorial(2), 0.05 );
+		assertEquals("factorial method has bugs", 99, Factorial.factorial(2), 0.05 );
     }
 
 }]]></junitcode>
@@ -104,17 +104,17 @@ public class FactorialTest {
 
 	@Test
 	public void testFactorialA () {
-		assertEquals("Fakultätsfunktion ist fehlerhaft", 0, Factorial.factorial(0), 0.05 );
+		assertEquals("factorial method has bugs", 0, Factorial.factorial(0), 0.05 );
     }
 	
 	@Test
 	public void testFactorialB () {
-		assertEquals("Fakultätsfunktion ist fehlerhaft", 2, Factorial.factorial(2), 0.05 );
+		assertEquals("factorial method has bugs", 2, Factorial.factorial(2), 0.05 );
     }
 	
 	@Test
 	public void testFactorialC () {
-		assertEquals("Fakultätsfunktion ist fehlerhaft", 6, Factorial.factorial(3), 0.05 );
+		assertEquals("factorial method has bugs", 6, Factorial.factorial(3), 0.05 );
     }
 
 }]]></junitcode>
@@ -170,17 +170,17 @@ public class FactorialTest {
 
 	@Test
 	public void testFactorialA () {
-		assertEquals("Fakultätsfunktion ist fehlerhaft", 1, Factorial.factorial(0), 0.05 );
+		assertEquals("factorial method has bugs", 1, Factorial.factorial(0), 0.05 );
     }
 	
 	@Test
 	public void testFactorialB () {
-		assertEquals("Fakultätsfunktion ist fehlerhaft", 1, Factorial.factorial(1), 0.05 );
+		assertEquals("factorial method has bugs", 1, Factorial.factorial(1), 0.05 );
     }
 	
 	@Test
 	public void testFactorialC () {
-		assertEquals("Fakultätsfunktion ist fehlerhaft", 2, Factorial.factorial(2), 0.05 );
+		assertEquals("factorial method has bugs", 2, Factorial.factorial(2), 0.05 );
     }
 
 }]]></junitcode>
@@ -236,7 +236,7 @@ public class FactorialTest {
 
 	@Test
 	public void testFactorialA () {
-		assertEquals("Fakultätsfunktion ist fehlerhaft", 1, Factorial.factorial(0), 0.05 )
+		assertEquals("factorial method has bugs", 1, Factorial.factorial(0), 0.05 )
     }
 
 }]]></junitcode>
@@ -292,7 +292,7 @@ public class FactorialTest {
 
 	@Test
 	public void testFactorialA () {
-		assertEquals("Fakultätsfunktion ist fehlerhaft", 1, Factorial.factorial(0), 0.05 );
+		assertEquals("factorial method has bugs", 1, Factorial.factorial(0), 0.05 );
     }
 
 }]]></junitcode>
@@ -348,7 +348,7 @@ public class FactorialTest {
 
 	@Test
 	public void testFactorialA () {
-		assertEquals("Fakultätsfunktion ist fehlerhaft", 1, Factorial.factorial(0), 0.05 );
+		assertEquals("factorial method has bugs", 1, Factorial.factorial(0), 0.05 );
     }
 
 }]]></junitcode>

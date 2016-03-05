@@ -112,9 +112,9 @@
                 value to the feedback
         + added possibility to deposit a sample solution
         + added possibility to deposit the expected signature for student code - after 
-                compiling it is matched with actual the javap signature and missmatches are printable
+                compiling it is matched with the actual javap signature and missmatches are printable
         + multiple classes in student code does not need to have the public one as the first anymore
-        + added some mor examples
+        + added some more examples
         # feedback: changed feedbacklevel - not hierarchiv anymore, you can now choose each 
                 feedback option separate per question
         # added parent directory for temporary files (javaunitest/uid=UID_qid=QID_aid=AID)

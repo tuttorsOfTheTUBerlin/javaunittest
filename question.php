@@ -23,7 +23,6 @@ class qtype_javaunittest_question extends question_graded_automatically {
     public $givencode;
     public $testclassname;
     public $junitcode;
-    public $solution_responsefieldlines;
     public $solution;
     public $signature;
     public $feedbacklevel_studentcompiler;
@@ -186,15 +185,21 @@ class qtype_javaunittest_question extends question_graded_automatically {
             } else if ( $ret['errortype'] == 'SIGNATURE_STUDENT_MISSMATCH' ) {
                 $feedback = get_string ( 'SSM', 'qtype_javaunittest' ) . '<br><br>';
                 if ( $this->feedbacklevel_studentsignature == 1 ) {
-                    for ( $i = 0; $i < count ( $ret['missing_class'] ); $i++ ) {
+                    if ( count ( $ret['missing_class'] ) > 0 ) {
                         $feedback .= get_string ( 'missing_class_headline', 'qtype_javaunittest' ) . '<br>';
-                        $feedback .= get_string ( 'missing_class_text1', 'qtype_javaunittest', htmlspecialchars ( $ret['missing_class'][$i] ) );
-                        $feedback .= get_string ( 'missing_class_text2', 'qtype_javaunittest', htmlspecialchars ( $ret['missing_class_extras'][$i] ) ) . '<br>';
+                        for ( $i = 0; $i < count ( $ret['missing_class'] ); $i++ ) {
+                            $feedback .= get_string ( 'missing_class_text1', 'qtype_javaunittest', htmlspecialchars ( $ret['missing_class'][$i] ) );
+                            $feedback .= get_string ( 'missing_class_text2', 'qtype_javaunittest', htmlspecialchars ( $ret['missing_class_extras'][$i] ) ) . '<br>';
+                        }
+                        $feedback .= '<br>';
                     }
-                    for ( $i = 0; $i < count ( $ret['missing_element_class'] ); $i++ ) {
+                    if ( count ( $ret['missing_element_class'] ) > 0 ) {
                         $feedback .= get_string ( 'missing_element_headline', 'qtype_javaunittest' ) . '<br>';
-                        $feedback .= get_string ( 'missing_element_text1', 'qtype_javaunittest', htmlspecialchars ( $ret['missing_element_class'][$i] ) );
-                        $feedback .= get_string ( 'missing_element_text2', 'qtype_javaunittest', htmlspecialchars ( $ret['missing_element_element'][$i] ) ) . '<br>';
+                        for ( $i = 0; $i < count ( $ret['missing_element_class'] ); $i++ ) {
+                            $feedback .= get_string ( 'missing_element_text1', 'qtype_javaunittest', htmlspecialchars ( $ret['missing_element_class'][$i] ) );
+                            $feedback .= get_string ( 'missing_element_text2', 'qtype_javaunittest', htmlspecialchars ( $ret['missing_element_element'][$i] ) ) . '<br>';
+                        }
+                        $feedback .= '<br>';
                     }
                 }
             } else if ( $ret['errortype'] == 'COMPILE_TESTFILE_ERROR' ) {
@@ -419,7 +424,7 @@ class qtype_javaunittest_question extends question_graded_automatically {
                 
                 // get expected signature, split by class ($toverify[2][]), impl/extends (toverify[3][]), classbody ($toverify[4][]), classbody lines ($toverify[5][][])
                 $toverify = array();
-                preg_match_all ( '/(public class|class) ([a-zA-Z\d_$]*) (.*){(.*)^}/sUm', $this->signature, $toverify);
+                preg_match_all ( '/(public class|class) ([a-zA-Z\d_$<>]*) (.*){(.*)^}/sUm', $this->signature, $toverify);
                 $toverify[5] = array();
                 for ( $i = 0; $i < count ( $toverify[0] ); $i++ ) {
                     $toverify[2][$i] = trim ( $toverify[2][$i] );
@@ -445,7 +450,7 @@ class qtype_javaunittest_question extends question_graded_automatically {
                 
                 // get students signature, split by class ($toverify[2][]), impl/extends (toverify[3][]), classbody ($toverify[4][]), classbody per line ($toverify[5][][])
                 $javap = array();
-                preg_match_all ( '/(public class|class) ([a-zA-Z\d_$]*) (.*){(.*)^}/sUm', $output, $javap);
+                preg_match_all ( '/(public class|class) ([a-zA-Z\d_$<>]*) (.*){(.*)^}/sUm', $output, $javap);
                 $javap[5] = array();
                 for ( $i = 0; $i < count ( $javap[0] ); $i++ ) {
                     $javap[2][$i] = trim ( $javap[2][$i] );
