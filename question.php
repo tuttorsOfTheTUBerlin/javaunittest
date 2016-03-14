@@ -264,8 +264,13 @@ class qtype_javaunittest_question extends question_graded_automatically {
                 }
                 if ( $this->feedbacklevel_assertstring == 1) {
                     $matches = array();
+                    $hiddematches = array();
                     $found = preg_match_all ( '/(java\.lang\.AssertionError|org\.junit\.ComparisonFailure): ([^<>]*)(expected:<(.*)> but was:<(.*)>|$)/mUs', $output, $matches );
-                    if ($found) {
+                    $hidden = preg_match_all ( '/(java\.lang\.AssertionError|org\.junit\.ComparisonFailure)$/mUs', $output, $hiddenmatches );
+                    foreach ( $matches[2] as $asserstr ) 
+                        if ( trim ( $asserstr ) == "Hide" )
+                            $hidden++;
+                    if ( ( $found && $hidden === FALSE ) || ( $found && $found > $hidden - $found ) ) {
                         $feedback .= '<table class="feedback_assert_table"><thead><tr>';
                         $feedback .= '<th class="feedback_assert_th_str">' . get_string ( 'assertfailures_string', 'qtype_javaunittest' ) . '</th>';
                         if ( $this->feedbacklevel_assertexpected == 1 )
@@ -273,23 +278,29 @@ class qtype_javaunittest_question extends question_graded_automatically {
                         if ( $this->feedbacklevel_assertactual == 1 )
                             $feedback .= '<th class="feedback_assert_th_val">' . get_string ( 'assertfailures_actual', 'qtype_javaunittest' ) . '</th>';
                         $feedback .= '</thead></tr><tbody>';
-                        for ( $c = 0; $c < $found; $c++) {
+                        for ( $c = 0; $c < $found; $c++ ) {
+                            if ( trim ( $matches[2][$c] ) == "Hide" ) 
+                                continue;
                             $feedback .= '<tr>';
                             $feedback .= '<td class="feedback_assert_td_str">' . htmlspecialchars ( $matches[2][$c] ) . '</td>';
                             if ( $this->feedbacklevel_assertexpected == 1 ) {
                                 $find = array('{', '}', '[', ']', '(', ')', '<', '>');
-                                $matches[3][$c] = str_replace($find, '', $matches[3][$c]);
+                                $matches[3][$c] = str_replace ( $find, '', $matches[3][$c] );
                                 $feedback .= '<td class="feedback_assert_td_val">' . htmlspecialchars ( $matches[4][$c] ) . '</td>';
                             } 
                             if ( $this->feedbacklevel_assertactual == 1 ) {
                                 $find = array('{', '}', '[', ']', '(', ')', '<', '>');
-                                $matches[4][$c] = str_replace($find, '', $matches[4][$c]);
+                                $matches[4][$c] = str_replace ( $find, '', $matches[4][$c] );
                                 $feedback .= '<td class="feedback_assert_td_val">' . htmlspecialchars ( $matches[5][$c] ) . '</td>';
                             }
                             $feedback .= '</tr>';
                         }
                         $feedback .= '</tbody></table>';
-                        $feedback .= "<br>\n";
+                        $feedback .= "<br>\n<br>\n";
+                    }
+                    if ( $hidden ) {
+                        $feedback .= get_string ( 'hiddenfails', 'qtype_javaunittest', $hidden );
+                        $feedback .= "<br>\n<br>\n";
                     }
                 }
                 if ( $this->feedbacklevel_junitcomplete == 1 ) {

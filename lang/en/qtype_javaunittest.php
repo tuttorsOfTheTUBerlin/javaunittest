@@ -81,6 +81,7 @@ $string['missing_methods_text2'] = ' the method <tt>{$a}</tt> is missing.';
 $string['assertfailures_string'] = 'Error description:';
 $string['assertfailures_expected'] = 'Expected value:';
 $string['assertfailures_actual'] = 'Actual value:';
+$string['hiddenfails'] = '{$a} other tests failed.';
 
 $string['ioexception'] = 'IOException occurred.';
 $string['filenotfoundexception'] = 'FileNotFoundException occurred.';
