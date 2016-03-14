@@ -66,12 +66,15 @@ $string['signature_help'] = 'Hier kann die erwartete Signatur für den vom Stude
 $string['compiling'] = 'kompilieren... [{$a}s]';
 $string['running'] = 'ausführen... [{$a}s]';
 
-$string['missing_class_headline'] = 'Fehlende Klassen:';
-$string['missing_class_text1'] = 'Die erwartete Klasse <tt>{$a}</tt>';
-$string['missing_class_text2'] = ' (<tt>{$a}</tt>) fehlt.';
-$string['missing_element_headline'] = 'Fehlende Attribute und Methoden:';
-$string['missing_element_text1'] = 'In Klasse <tt>{$a}</tt>';
-$string['missing_element_text2'] = ' fehlt das Element <tt>{$a}</tt>';
+$string['missing_classes_headline'] = 'Fehlende Klassen:';
+$string['missing_classes_text1'] = 'Die erwartete Klasse <tt>{$a}</tt>';
+$string['missing_classes_text2'] = ' (<tt>{$a}</tt>) fehlt.';
+$string['missing_members_headline'] = 'Fehlende Attribute:';
+$string['missing_members_text1'] = 'In Klasse <tt>{$a}</tt>';
+$string['missing_members_text2'] = ' fehlt das Attribut <tt>{$a}</tt>.';
+$string['missing_methods_headline'] = 'Fehlende Methoden:';
+$string['missing_methods_text1'] = 'In Klasse <tt>{$a}</tt>';
+$string['missing_methods_text2'] = ' fehlt die Methode <tt>{$a}</tt>.';
 
 $string['assertfailures_string'] = 'Fehlerbeschreibung:';
 $string['assertfailures_expected'] = 'Erwartetes Ergebnis:';

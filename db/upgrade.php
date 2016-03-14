@@ -190,7 +190,7 @@ function xmldb_qtype_javaunittest_upgrade ( $oldversion ) {
         $dbman->add_field ( $table, $field );
         $field = new xmldb_field ( 'signature', XMLDB_TYPE_TEXT, 'small', null, null, null, null, 'solution' );
         $dbman->add_field ( $table, $field );
-        $field = new xmldb_field ( 'feedbacklevel_studentsignature', XMLDB_TYPE_INTEGER, '4', XMLDB_UNSIGNED, XMLDB_NOTNULL, null, '0', 'feedbacklevel_studentcompiler' );
+        $field = new xmldb_field ( 'feedbacklevel_studentsignature', XMLDB_TYPE_INTEGER, '4', XMLDB_UNSIGNED, XMLDB_NOTNULL, null, '1', 'feedbacklevel_studentcompiler' );
         $dbman->add_field ( $table, $field );
         
         upgrade_plugin_savepoint ( true, 2016020200, 'qtype', 'javaunittest' );

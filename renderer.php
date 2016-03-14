@@ -86,7 +86,8 @@ class qtype_javaunittest_renderer extends qtype_renderer {
     public function correct_response ( question_attempt $qa ) {
 
         $question = $qa->get_question ();
-        $step = $qa->get_last_step_with_qt_var ( 'solution' );
+        if ( empty ( $question->signature ) || trim ( $question->signature) == '' )
+            return null;
         
         $htmlfragment = get_string ( 'solutionannounce', 'qtype_javaunittest' ) . '<br>';
         $newlines = substr_count($question->solution, "\n");

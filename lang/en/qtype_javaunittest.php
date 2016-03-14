@@ -68,12 +68,15 @@ $string['signature_help'] = 'Expected signature of student code can be placed he
 $string['compiling'] = 'compiling... [{$a}s]';
 $string['running'] = 'running... [{$a}s]';
 
-$string['missing_class_headline'] = 'Missing classes:';
-$string['missing_class_text1'] = 'The expected class <tt>{$a}</tt>';
-$string['missing_class_text2'] = ' (<tt>{$a}</tt>) is missing.';
-$string['missing_element_headline'] = 'Missing attributes and methodes:';
-$string['missing_element_text1'] = 'In class <tt>{$a}</tt>';
-$string['missing_element_text2'] = ' the element <tt>{$a}</tt> is missing';
+$string['missing_classes_headline'] = 'Missing classes:';
+$string['missing_classes_text1'] = 'The expected class <tt>{$a}</tt>';
+$string['missing_classes_text2'] = ' (<tt>{$a}</tt>) is missing.';
+$string['missing_members_headline'] = 'Missing class members:';
+$string['missing_members_text1'] = 'In class <tt>{$a}</tt>';
+$string['missing_members_text2'] = ' the member <tt>{$a}</tt> is missing.';
+$string['missing_methods_headline'] = 'Missing methods:';
+$string['missing_methods_text1'] = 'In class <tt>{$a}</tt>';
+$string['missing_methods_text2'] = ' the method <tt>{$a}</tt> is missing.';
 
 $string['assertfailures_string'] = 'Error description:';
 $string['assertfailures_expected'] = 'Expected value:';

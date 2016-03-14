@@ -12,7 +12,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 OR later
  */
 defined ( 'MOODLE_INTERNAL' ) || die ();
-require_once (dirname ( __FILE__ ) . '/lib.php');
+require_once ( dirname ( __FILE__ ) . '/lib.php' );
 
 /**
  * Represents a javaunittest question.
@@ -37,8 +37,8 @@ class qtype_javaunittest_question extends question_graded_automatically {
     public $feedbacklevel_junitcomplete;
     public $questionattemptid = null;
     
-    public function __construct() {
-        parent::__construct();
+    public function __construct () {
+        parent::__construct ();
 
         // load CSS here since on pages generated with usage of ./renderer.php 
         // the output starts before ./lib.qtype_javaunittest_generateJsBy is called
@@ -175,7 +175,7 @@ class qtype_javaunittest_question extends question_graded_automatically {
         } else {
             $ret = $this->remote_execute ( $response );
         }
-        
+
         if ( $ret['error'] ) {
             if ( $ret['errortype'] == 'COMPILE_STUDENT_ERROR' ) {
                 $feedback = get_string ( 'CE', 'qtype_javaunittest' ) . '<br><br>';
@@ -185,19 +185,27 @@ class qtype_javaunittest_question extends question_graded_automatically {
             } else if ( $ret['errortype'] == 'SIGNATURE_STUDENT_MISSMATCH' ) {
                 $feedback = get_string ( 'SSM', 'qtype_javaunittest' ) . '<br><br>';
                 if ( $this->feedbacklevel_studentsignature == 1 ) {
-                    if ( count ( $ret['missing_class'] ) > 0 ) {
-                        $feedback .= get_string ( 'missing_class_headline', 'qtype_javaunittest' ) . '<br>';
-                        for ( $i = 0; $i < count ( $ret['missing_class'] ); $i++ ) {
-                            $feedback .= get_string ( 'missing_class_text1', 'qtype_javaunittest', htmlspecialchars ( $ret['missing_class'][$i] ) );
-                            $feedback .= get_string ( 'missing_class_text2', 'qtype_javaunittest', htmlspecialchars ( $ret['missing_class_extras'][$i] ) ) . '<br>';
+                    if ( count ( $ret['missing_classes'] ) > 0 ) {
+                        $feedback .= get_string ( 'missing_classes_headline', 'qtype_javaunittest' ) . '<br>';
+                        for ( $i = 0; $i < count ( $ret['missing_classes'] ); $i++ ) {
+                            $feedback .= get_string ( 'missing_classes_text1', 'qtype_javaunittest', htmlspecialchars ( $ret['missing_classes'][$i] ) );
+                            $feedback .= get_string ( 'missing_classes_text2', 'qtype_javaunittest', htmlspecialchars ( $ret['missing_classes_extras'][$i] ) ) . '<br>';
                         }
                         $feedback .= '<br>';
                     }
-                    if ( count ( $ret['missing_element_class'] ) > 0 ) {
-                        $feedback .= get_string ( 'missing_element_headline', 'qtype_javaunittest' ) . '<br>';
-                        for ( $i = 0; $i < count ( $ret['missing_element_class'] ); $i++ ) {
-                            $feedback .= get_string ( 'missing_element_text1', 'qtype_javaunittest', htmlspecialchars ( $ret['missing_element_class'][$i] ) );
-                            $feedback .= get_string ( 'missing_element_text2', 'qtype_javaunittest', htmlspecialchars ( $ret['missing_element_element'][$i] ) ) . '<br>';
+                    if ( count ( $ret['missing_members_class'] ) > 0 ) {
+                        $feedback .= get_string ( 'misssing_members_headline', 'qtype_javaunittest' ) . '<br>';
+                        for ( $i = 0; $i < count ( $ret['missing_members_class'] ); $i++ ) {
+                            $feedback .= get_string ( 'missing_members_text1', 'qtype_javaunittest', htmlspecialchars ( $ret['missing_members_class'][$i] ) );
+                            $feedback .= get_string ( 'missing_members_text2', 'qtype_javaunittest', htmlspecialchars ( $ret['missing_members_element'][$i] ) ) . '<br>';
+                        }
+                        $feedback .= '<br>';
+                    }
+                    if ( count ( $ret['missing_methods_class'] ) > 0 ) {
+                        $feedback .= get_string ( 'missing_methods_headline', 'qtype_javaunittest' ) . '<br>';
+                        for ( $i = 0; $i < count ( $ret['missing_methods_class'] ); $i++ ) {
+                            $feedback .= get_string ( 'missing_methods_text1', 'qtype_javaunittest', htmlspecialchars ( $ret['missing_methods_class'][$i] ) );
+                            $feedback .= get_string ( 'missing_methods_text2', 'qtype_javaunittest', htmlspecialchars ( $ret['missing_methods_element'][$i] ) ) . '<br>';
                         }
                         $feedback .= '<br>';
                     }
@@ -256,7 +264,7 @@ class qtype_javaunittest_question extends question_graded_automatically {
                 }
                 if ( $this->feedbacklevel_assertstring == 1) {
                     $matches = array();
-                    $found = preg_match_all ( '/(java\.lang\.AssertionError|org\.junit\.ComparisonFailure): ([^<>]*)( expected:<(.*)> but was:<(.*)>|$)/mUs', $output, $matches );
+                    $found = preg_match_all ( '/(java\.lang\.AssertionError|org\.junit\.ComparisonFailure): ([^<>]*)(expected:<(.*)> but was:<(.*)>|$)/mUs', $output, $matches );
                     if ($found) {
                         $feedback .= '<table class="feedback_assert_table"><thead><tr>';
                         $feedback .= '<th class="feedback_assert_th_str">' . get_string ( 'assertfailures_string', 'qtype_javaunittest' ) . '</th>';
@@ -420,7 +428,7 @@ class qtype_javaunittest_question extends question_graded_automatically {
             }
             
             // check signature
-            if ( !empty( $this->signature ) ) {
+            if ( !empty ( $this->signature ) && trim ( $this->signature) != "" ) {
                 
                 // get expected signature, split by class ($toverify[2][]), impl/extends (toverify[3][]), classbody ($toverify[4][]), classbody lines ($toverify[5][][])
                 $toverify = array();
@@ -434,7 +442,7 @@ class qtype_javaunittest_question extends question_graded_automatically {
                     $toverify[5][$i] = array();
                     $toverify[5][$i] = explode ( ";", $toverify[4][$i] );
                     for ( $a = 0; $a < count ( $toverify[5][$i] ); $a++ ) {
-                        $toverify[5][$i][$a] = trim ( $toverify[5][$i][$a] );
+                        $toverify[5][$i][$a] = str_replace ( 'java.lang.', '', trim ( $toverify[5][$i][$a] ) );
                     }
                 }
 
@@ -460,32 +468,39 @@ class qtype_javaunittest_question extends question_graded_automatically {
                     $javap[5][$i] = array();
                     $javap[5][$i] = explode ( ";", $javap[4][$i] );
                     for ( $a = 0; $a < count ( $javap[5][$i] ); $a++ ) {
-                        $javap[5][$i][$a] = trim ( $javap[5][$i][$a] );
+                        $javap[5][$i][$a] = str_replace ( 'java.lang.', '', trim ( $javap[5][$i][$a] ) );
                     }
                 }
                 
                 // search for missing classes and elements
-                $missing_class = array();
-                $missing_class_extras = array();
-                $missing_element_class = array();
-                $missing_element_element = array();
+                $missing_classes = array();
+                $missing_classes_extras = array();
+                $missing_members_class = array();
+                $missing_members_element = array();
+                $missing_methods_class = array();
+                $missing_methods_element = array();
                 for ( $toverify_classindex = 0; $toverify_classindex < count ( $toverify[2] ); $toverify_classindex++ ) {
-                    $found_class = 0;
+                    $found_class = FALSE;
                     for ( $javap_classindex = 0; $javap_classindex < count ( $javap[2] ); $javap_classindex++ ) {
                         if ( strcmp ( $toverify[2][$toverify_classindex], $javap[2][$javap_classindex] ) === 0 ) {
                             if ( strcmp ( $toverify[3][$toverify_classindex], $javap[3][$javap_classindex] ) === 0 ) {
-                                $found_class = 1;
+                                $found_class = TRUE;
                                 
                                 for ( $toverify_elemindex = 0; $toverify_elemindex < count ( $toverify[5][$toverify_classindex] ); $toverify_elemindex++ ) {
-                                    $found_elem = 0;
+                                    $found_elem = FALSE;
                                     for ( $javap_elemindex = 0; $javap_elemindex < count ( $javap[5][$javap_classindex] ); $javap_elemindex++ ) {
                                         if ( strcmp ( $toverify[5][$toverify_classindex][$toverify_elemindex], $javap[5][$javap_classindex][$javap_elemindex] ) === 0 ) {
-                                            $found_elem = 1;
+                                            $found_elem = TRUE;
                                         }
                                     }
-                                    if ( $found_elem !== 1 ) {
-                                        $missing_element_class[] = $toverify[2][$toverify_classindex];
-                                        $missing_element_element[] = $toverify[5][$toverify_classindex][$toverify_elemindex];
+                                    if ( $found_elem !== TRUE ) {
+                                        if ( strstr ( $toverify[5][$toverify_classindex][$toverify_elemindex], "(" ) === FALSE ) {
+                                            $missing_members_class[] = $toverify[2][$toverify_classindex];
+                                            $missing_members_element[] = str_replace ( 'java.lang.', '', $toverify[5][$toverify_classindex][$toverify_elemindex] );
+                                        } else {
+                                            $missing_methods_class[] = $toverify[2][$toverify_classindex];
+                                            $missing_methods_element[] = str_replace ( 'java.lang.', '', $toverify[5][$toverify_classindex][$toverify_elemindex] );               
+                                        }
                                     }
                                 }
                                 
@@ -493,20 +508,22 @@ class qtype_javaunittest_question extends question_graded_automatically {
                         }
                         
                     }
-                    if ( $found_class !== 1) {
-                        $missing_class[] = $toverify[2][$toverify_classindex];
-                        $missing_class_extras[] = $toverify[3][$toverify_classindex];
+                    if ( $found_class !== TRUE ) {
+                        $missing_classes[] = $toverify[2][$toverify_classindex];
+                        $missing_classes_extras[] = $toverify[3][$toverify_classindex];
                     }
                 }
 
-                if ( !empty ( $missing_class ) || !empty ( $missing_element_class ) ) {
+                if ( !empty ( $missing_classes ) || !empty ( $missing_members_class ) || !empty ( $missing_methods_class ) ) {
                     return array (
                             'error' => true,
                             'errortype' => 'SIGNATURE_STUDENT_MISSMATCH',
-                            'missing_class' => $missing_class,
-                            'missing_class_extras' => $missing_class_extras,
-                            'missing_element_class' => $missing_element_class,
-                            'missing_element_element' => $missing_element_element
+                            'missing_classes' => $missing_classes,
+                            'missing_classes_extras' => $missing_classes_extras,
+                            'missing_members_class' => $missing_members_class,
+                            'missing_members_element' => $missing_members_element,
+                            'missing_methods_class' => $missing_methods_class,
+                            'missing_methods_element' => $missing_methods_element
                     );
                 }
             }
