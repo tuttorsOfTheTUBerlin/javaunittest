@@ -194,7 +194,7 @@ class qtype_javaunittest_question extends question_graded_automatically {
                         $feedback .= '<br>';
                     }
                     if ( count ( $ret['missing_members_class'] ) > 0 ) {
-                        $feedback .= get_string ( 'misssing_members_headline', 'qtype_javaunittest' ) . '<br>';
+                        $feedback .= get_string ( 'missing_members_headline', 'qtype_javaunittest' ) . '<br>';
                         for ( $i = 0; $i < count ( $ret['missing_members_class'] ); $i++ ) {
                             $feedback .= get_string ( 'missing_members_text1', 'qtype_javaunittest', htmlspecialchars ( $ret['missing_members_class'][$i] ) );
                             $feedback .= get_string ( 'missing_members_text2', 'qtype_javaunittest', htmlspecialchars ( $ret['missing_members_element'][$i] ) ) . '<br>';
